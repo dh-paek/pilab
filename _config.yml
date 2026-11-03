@@ -1,0 +1,95 @@
+# =====================================================================
+#  PILab — Perception and Intelligence Lab @ Korea University Sejong
+#  사이트 전역 설정. 수정 후 로컬 미리보기(jekyll serve)는 재시작해야 반영됩니다.
+# =====================================================================
+
+title: "PILab"
+lang: ko_KR
+description: >-
+  Perception and Intelligence Lab (PILab), Department of Future Mobility,
+  Korea University Sejong Campus. 4D radar AI, multi-modal sensor fusion,
+  and robust perception for autonomous mobility.
+
+# ---------------------------------------------------------------------
+#  GitHub Pages 주소 설정 (README 참고)
+#   - 저장소 이름이 <계정>.github.io  →  baseurl: ""
+#   - 저장소 이름이 pilab-website     →  baseurl: "/pilab-website"
+#   - 커스텀 도메인(CNAME) 사용 시     →  baseurl: "", url: "https://도메인"
+# ---------------------------------------------------------------------
+url: "https://dh-paek.github.io"
+baseurl: "/pilab"          # 저장소 dh-paek/pilab → https://dh-paek.github.io/pilab
+
+# ---------------------------------------------------------------------
+#  연구실 정보 — 헤더·푸터·About·Join 페이지 곳곳에 쓰입니다.
+#  {ko, en} 쌍으로 적힌 값은 언어 토글(KO/EN)에 따라 바뀌어 표시됩니다.
+# ---------------------------------------------------------------------
+lab:
+  short: "PILab"
+  name:
+    en: "Perception and Intelligence Lab"
+    ko: "인지지능연구실"
+  affiliation:
+    en: "Department of Future Mobility, Korea University Sejong"
+    ko: "고려대학교 세종캠퍼스 미래모빌리티학과"
+  tagline_top: ""       # 메인 히어로 제목 위 작은 문구 (비우면 숨김)
+  hero_title:
+    en: "Reliable Perception AI<br>for Every Condition"
+    ko: "어떤 환경에서도<br>신뢰할 수 있는 인지 AI"
+  hero_sub:
+    en: "4D Radar AI · Multi-Modal Sensor Fusion · Embedded Intelligence"
+    ko: "4D 레이더 AI · 다중 센서 융합 · 임베디드 지능"
+  pi:
+    name: { en: "Dong-Hee Paek", ko: "백동희" }
+    title: { en: "Assistant Professor", ko: "조교수" }
+  email: "dhpaek@korea.ac.kr"
+  phone: "+82-44-860-1381"   # 비워 두면 표시 안 됨
+  office:
+    en: "Room 302, Accelerator ICT Convergence Building, Korea University Sejong Campus"
+    ko: "고려대학교 세종캠퍼스 가속기ICT융합관 302호"
+  student_room:          # 학생연구실 — 푸터 왼쪽 주소 첫 줄 (비우면 소속 학과 표시)
+    ko: "고려대학교 세종캠퍼스 과학기술1관 217호"
+    en: "Room 217, Science & Technology Bldg. 1, Korea University Sejong"
+  address:
+    en: "2511 Sejong-ro, Sejong City 30019, Republic of Korea"
+    ko: "(30019) 세종특별자치시 세종로 2511"
+  map_url: "https://maps.google.com/?q=Korea+University+Sejong+Campus"
+
+# 외부 링크 — 비워 두면 해당 버튼/링크가 자동으로 숨겨집니다.
+links:
+  google_scholar: "https://scholar.google.com/citations?user=5vfSQOUAAAAJ"
+  github: ""           # 예: "https://github.com/pilab-ku"
+  orcid: ""            # 예: "https://orcid.org/0000-0000-0000-0000"
+  linkedin: ""
+  cv: ""               # 예: "/assets/files/cv.pdf"
+  university: "https://sejong.korea.ac.kr/"
+  department: ""       # 학과 홈페이지 URL
+
+# ---------------------------------------------------------------------
+#  Jekyll 빌드 설정 (보통은 수정할 필요 없음)
+# ---------------------------------------------------------------------
+theme: null           # 기본 테마(primer) 비활성화 — 자체 레이아웃 사용
+timezone: Asia/Seoul
+permalink: /news/:year/:month/:title/
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+defaults:
+  - scope: { path: "", type: "posts" }
+    values: { layout: "post" }
+  - scope: { path: "" }
+    values: { layout: "default" }
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - .github
+  - "*.zip"
+  - state.json        # 작업 상태 파일 (사이트에 게시하지 않음)

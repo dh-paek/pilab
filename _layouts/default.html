@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="ko" data-lang="ko">
+<head>
+{% include head.html %}
+</head>
+<body id="top" class="page-{{ page.slug | default: page.title | default: 'home' | slugify }}">
+{% include header.html %}
+<main id="main">
+{{ content }}
+</main>
+{% include footer.html %}
+<script src="{{ '/assets/js/main.js' | relative_url }}" defer></script>
+</body>
+</html>

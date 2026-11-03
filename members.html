@@ -1,0 +1,111 @@
+---
+layout: page
+title: Members
+slug: members
+permalink: /members/
+hero:
+  big: "Members"
+  title: { ko: "구성원", en: "People" }
+  desc:
+    ko: "PILab과 함께 연구하는 사람들을 소개합니다."
+    en: "The people behind PILab."
+---
+{%- assign pi = site.data.members.pi -%}
+{%- assign n_cur = 0 -%}
+{%- for g in site.data.members.groups %}{% assign n_cur = n_cur | plus: g.members.size %}{% endfor %}
+{%- assign n_alu = site.data.members.alumni | size -%}
+
+<section class="section section--tight">
+  <div class="container">
+    <!-- ===== PI ===== -->
+    <article class="pi">
+      <div class="pi-photo">{% include avatar.html m=pi class="avatar--pi" %}</div>
+      <div class="pi-info">
+        <p class="eyebrow">PRINCIPAL INVESTIGATOR</p>
+        <h2 class="pi-name"><span lang="ko">{{ pi.name.ko }} <small>{{ pi.name.en }}, {{ pi.degree }}</small></span><span lang="en">{{ pi.name.en }} <small>{{ pi.degree }}</small></span></h2>
+        <p class="pi-role">{% include t.html v=pi.affiliation %} · {% include t.html v=pi.role %}</p>
+        <p class="pi-contact">
+          <a href="mailto:{{ pi.email }}">{% include icon.html name="mail" size=16 %} {{ pi.email }}</a>
+          {%- if site.lab.phone != "" %}<span>{% include icon.html name="phone" size=16 %} {{ site.lab.phone }}</span>{% endif %}
+          <span>{% include icon.html name="pin" size=16 %} {% include t.html v=site.lab.office %}</span>
+        </p>
+        <p class="pi-links">
+          {%- if site.links.cv != "" %}<a class="btn btn-dark btn-sm" href="{{ site.links.cv | relative_url }}" target="_blank" rel="noopener">CV {% include icon.html name="arrow" size=14 %}</a>{% endif -%}
+          {%- if site.links.github != "" %}<a class="btn btn-outline-plain btn-sm" href="{{ site.links.github }}" target="_blank" rel="noopener">GitHub</a>{% endif -%}
+          {%- if site.links.orcid != "" %}<a class="btn btn-outline-plain btn-sm" href="{{ site.links.orcid }}" target="_blank" rel="noopener">ORCID</a>{% endif -%}
+          {%- if site.links.linkedin != "" %}<a class="btn btn-outline-plain btn-sm" href="{{ site.links.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>{% endif -%}
+          <a class="btn btn-outline-plain btn-sm" href="{{ '/publications/' | relative_url }}">Publications</a>
+          {%- if site.links.google_scholar != "" %}<a class="btn btn-outline-plain btn-sm" href="{{ site.links.google_scholar }}" target="_blank" rel="noopener">Google Scholar {% include icon.html name="external" size=14 %}</a>{% endif %}
+        </p>
+        <p class="pi-bio">{% include t.html v=pi.bio %}</p>
+
+        <div class="pi-cols">
+          <div>
+            <p class="mini-label">{% include t.html ko="학력" en="Education" %}</p>
+            <dl class="timeline">
+              {%- for e in pi.education %}<dt><span lang="ko">{{ e.period }}</span><span lang="en">{{ e.period_en | default: e.period }}</span></dt><dd>{% include t.html v=e %}</dd>{% endfor %}
+            </dl>
+            <p class="mini-label">{% include t.html ko="수상" en="Honors" %}</p>
+            <ul class="plain-list">
+              {%- for h in pi.honors %}<li>{% include t.html v=h %}</li>{% endfor %}
+            </ul>
+          </div>
+          <div>
+            <p class="mini-label">{% include t.html ko="경력" en="Experience" %}</p>
+            <dl class="timeline">
+              {%- for c in pi.career %}<dt><span lang="ko">{{ c.period }}</span><span lang="en">{{ c.period_en | default: c.period }}</span></dt><dd>{% include t.html v=c %}</dd>{% endfor %}
+            </dl>
+            <p class="mini-label">{% include t.html ko="튜토리얼 · 초청 강연" en="Tutorials & Invited Talks" %}</p>
+            <ul class="plain-list">
+              {%- for tk in pi.talks %}<li>{% if tk.year != "" %}<b>{{ tk.year }}</b> {% endif %}{% include t.html v=tk %}</li>{% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ===== Students ===== -->
+    <div class="member-groups">
+      {%- for g in site.data.members.groups %}
+      <h3 class="group-title">{% include t.html v=g.title %} <small>{{ g.members.size }}</small></h3>
+      <div class="member-grid">
+        {%- for m in g.members %}
+        <article class="member">
+          {% include avatar.html m=m %}
+          <div class="member-info">
+            <h4>{% include t.html v=m.name %} {%- if m.name.ko %}<small lang="ko">{{ m.name.en }}</small>{% endif %}</h4>
+            <p class="member-program">{% if m.leader %}<span class="pill pill--crimson">{% include t.html ko="랩장" en="Lab lead" %}</span>{% endif %}{% include t.html v=m.program %}{% if m.since %} · {{ m.since }}{% endif %}</p>
+            {%- if m.interests %}<p class="member-interest">{% include t.html v=m.interests %}</p>{% endif %}
+            <p class="member-links">
+              {%- if m.email %}<a href="mailto:{{ m.email }}">{{ m.email }}</a>{% endif -%}
+              {%- if m.links.github and m.links.github != "" %}<a href="{{ m.links.github }}" target="_blank" rel="noopener">GitHub</a>{% endif -%}
+              {%- if m.links.homepage and m.links.homepage != "" %}<a href="{{ m.links.homepage }}" target="_blank" rel="noopener">Homepage</a>{% endif -%}
+              {%- if m.links.cv and m.links.cv != "" %}<a href="{{ m.links.cv | relative_url }}" target="_blank" rel="noopener">CV ↗</a>{% endif -%}
+            </p>
+          </div>
+        </article>
+        {%- endfor %}
+        <a class="member member--open" href="{{ '/join/' | relative_url }}">
+          <span class="avatar avatar--open">{% include icon.html name="users" size=28 %}</span>
+          <div class="member-info">
+            <h4><span lang="ko">{{ g.title.ko }} 모집 중</span><span lang="en">Now recruiting</span></h4>
+            <p class="member-program"><span lang="ko">PILab에서 함께 연구할 {{ g.title.ko }}을 찾고 있습니다.</span><span lang="en">We are looking for {{ g.title.en | downcase }}.</span></p>
+            <p class="link-arrow">{% include t.html ko="모집 안내" en="How to join" %} {% include icon.html name="arrow" size=14 %}</p>
+          </div>
+        </a>
+      </div>
+      {%- endfor %}
+    </div>
+
+    {%- if n_alu > 0 %}
+    <div class="member-alumni">
+      <h3 class="group-title">{% include t.html ko="졸업생" en="Alumni" %} <small>{{ n_alu }}</small></h3>
+      <ul class="alumni-list">
+        {%- for m in site.data.members.alumni %}
+        <li><b>{% include t.html v=m.name %}</b><span>{% include t.html v=m.degree %}</span><span>{% include t.html v=m.now %}</span></li>
+        {%- endfor %}
+      </ul>
+    </div>
+    {%- endif %}
+  </div>
+</section>

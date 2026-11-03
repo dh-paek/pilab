@@ -1,0 +1,90 @@
+---
+layout: page
+title: About
+slug: about
+permalink: /about/
+hero:
+  big: "PILab"
+  title: { ko: "연구실 소개", en: "About PILab" }
+  desc:
+    ko: "Perception and Intelligence Lab — 모빌리티를 위한 강인한 인지 지능을 연구합니다."
+    en: "Perception and Intelligence Lab — robust perception intelligence for mobility."
+---
+<section class="section section--tight">
+  <div class="container about-intro">
+    <div>
+      <p class="eyebrow">MISSION</p>
+      <h2 class="about-lead">{% include t.html ko="보이지 않는 환경에서도<br><em>보고 해석하는</em> AI를 만듭니다." en="AI that <em>sees and interprets</em><br>even when cameras can't." %}</h2>
+    </div>
+    <div class="prose">
+      <div lang="ko">
+        <p>자율주행차, 로봇, 드론이 실제 도로와 현장에 나가려면 폭우·폭설·안개·야간처럼 카메라와 LiDAR가 흔들리는 조건에서도 주변을 정확히 인지해야 합니다. <strong>PILab(인지지능연구실)</strong>은 전파를 이용해 날씨와 조명에 강인한 <strong>4D 레이더</strong>를 중심으로, 여러 센서를 지능적으로 결합하는 인지 AI를 연구합니다.</p>
+        <p>우리는 레이더 신호 처리와 확률적 상태 추정 같은 <em>신호·모델 기반 이론</em>과, 대규모 데이터로 학습하는 <em>딥러닝</em>을 하나로 잇는 연구를 지향합니다. 데이터셋 구축부터 네트워크 설계, 센서 융합, 그리고 실제 차량·임베디드 하드웨어 탑재까지 — 연구가 실험실에서 끝나지 않도록 전 과정을 다룹니다.</p>
+      </div>
+      <div lang="en">
+        <p>For autonomous vehicles, robots, and drones to leave the lab, they must perceive their surroundings even when cameras and LiDAR falter — heavy rain, snow, fog, or darkness. <strong>PILab</strong> builds perception AI centered on <strong>4D radar</strong>, a sensor robust to weather and lighting, and on intelligent fusion of multiple sensors.</p>
+        <p>We bridge <em>signal- and model-based theory</em> — radar signal processing and probabilistic state estimation — with <em>data-driven deep learning</em>. From building datasets to designing networks, fusing sensors, and deploying on real vehicles and embedded hardware, we cover the full pipeline so that research does not stop at the benchmark.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--soft">
+  <div class="container">
+    <p class="eyebrow">WHY 4D RADAR</p>
+    <h2 class="section-title">{% include t.html ko="왜 4D 레이더인가" en="Why 4D radar?" %}</h2>
+    <div class="why-grid">
+      <div class="why">
+        <span class="area-icon">{% include icon.html name="wave" size=22 %}</span>
+        <h3>{% include t.html ko="전천후 인지" en="All-weather sensing" %}</h3>
+        <p>{% include t.html ko="밀리미터파는 비·눈·안개·어둠을 투과해, 광학 센서가 흐려지는 순간에도 거리와 속도를 측정합니다." en="Millimeter waves penetrate rain, snow, fog, and darkness — measuring range and velocity when optical sensors blur." %}</p>
+      </div>
+      <div class="why">
+        <span class="area-icon">{% include icon.html name="radar" size=22 %}</span>
+        <h3>{% include t.html ko="4차원 측정" en="Four dimensions" %}</h3>
+        <p>{% include t.html ko="거리·방위각·고도에 도플러 속도까지 — 한 번의 측정으로 3D 위치와 움직임을 동시에 얻습니다." en="Range, azimuth, elevation, and Doppler velocity — 3D position and motion in a single measurement." %}</p>
+      </div>
+      <div class="why">
+        <span class="area-icon">{% include icon.html name="car" size=22 %}</span>
+        <h3>{% include t.html ko="양산 가능한 센서" en="Production-ready" %}</h3>
+        <p>{% include t.html ko="LiDAR 대비 저렴하고 차량에 숨겨 장착할 수 있어, 양산 자율주행과 로봇·드론에 현실적인 대안입니다." en="Cheaper than LiDAR and easy to hide in a vehicle body — a practical choice for mass-produced vehicles, robots, and drones." %}</p>
+      </div>
+      <div class="why">
+        <span class="area-icon">{% include icon.html name="spark" size=22 %}</span>
+        <h3>{% include t.html ko="AI가 열어갈 영역" en="Wide open for AI" %}</h3>
+        <p>{% include t.html ko="희소하고 잡음이 많은 레이더 데이터는 아직 AI가 풀어야 할 문제가 많은, 가장 빠르게 성장하는 인지 분야입니다." en="Sparse, noisy radar data leaves many open problems — one of the fastest-growing frontiers in perception." %}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container about-facts">
+    <div>
+      <p class="eyebrow">AT A GLANCE</p>
+      <h2 class="section-title">{% include t.html ko="연구실 개요" en="Lab at a glance" %}</h2>
+      <dl class="facts">
+        <div><dt>{% include t.html ko="연구실" en="Lab" %}</dt><dd>{{ site.lab.short }} · {% include t.html v=site.lab.name %}</dd></div>
+        <div><dt>{% include t.html ko="소속" en="Affiliation" %}</dt><dd>{% include t.html v=site.lab.affiliation %}</dd></div>
+        <div><dt>{% include t.html ko="지도교수" en="Director" %}</dt><dd><a href="{{ '/members/' | relative_url }}">{% include t.html v=site.lab.pi.name %}</a> · {% include t.html v=site.lab.pi.title %}</dd></div>
+        <div><dt>{% include t.html ko="개소" en="Established" %}</dt><dd>{% include t.html ko="2026년 9월" en="September 2026" %}</dd></div>
+        <div><dt>{% include t.html ko="핵심 키워드" en="Keywords" %}</dt><dd>4D Radar · Sensor Fusion · 3D Occupancy · MOT · SNN · Embedded AI</dd></div>
+        <div><dt>{% include t.html ko="연락처" en="Contact" %}</dt><dd><a href="mailto:{{ site.lab.email }}">{{ site.lab.email }}</a></dd></div>
+      </dl>
+    </div>
+    <div class="location-card">
+      <p class="eyebrow">LOCATION</p>
+      <h3>{% include t.html ko="오시는 길" en="Location" %}</h3>
+      <p>{% include icon.html name="pin" size=18 %} {% include t.html v=site.lab.address %}</p>
+      <p class="muted">{% include t.html v=site.lab.office %}</p>
+      <ul class="plain-list">
+        <li>{% include t.html ko="가까운 역: 경부선 조치원역, KTX·SRT 오송역" en="Nearest stations: Jochiwon (Gyeongbu Line), Osong (KTX/SRT)" %}</li>
+        <li>{% include t.html ko="자세한 교통편은 학교 ‘캠퍼스 오시는 길’ 안내를 참고하세요." en="See the university's campus directions page for details." %}</li>
+      </ul>
+      <div class="btn-row">
+        <a class="btn btn-outline" href="{{ site.lab.map_url }}" target="_blank" rel="noopener">{% include t.html ko="지도에서 보기" en="Open in Maps" %} {% include icon.html name="external" size=16 %}</a>
+        <a class="btn btn-outline-plain" href="https://sejong.korea.ac.kr/koreaSejong/7804/subview.do" target="_blank" rel="noopener">{% include t.html ko="캠퍼스 오시는 길" en="Campus directions" %}</a>
+      </div>
+    </div>
+  </div>
+</section>

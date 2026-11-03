@@ -1,0 +1,8 @@
+# 상단 메뉴 — 순서대로 표시됩니다.
+- { label: "PILab",        url: "/about/" }
+- { label: "Members",      url: "/members/" }
+- { label: "Research",     url: "/research/" }
+- { label: "Projects",     url: "/projects/" }
+- { label: "Publications", url: "/publications/" }
+- { label: "Courses",      url: "/courses/" }
+- { label: "News",         url: "/news/" }

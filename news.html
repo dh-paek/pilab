@@ -1,0 +1,38 @@
+---
+layout: page
+title: News
+slug: news
+permalink: /news/
+hero:
+  big: "News"
+  title: { ko: "연구실 소식", en: "Lab News" }
+  desc:
+    ko: "논문, 강연, 수상, 언론 보도 등 PILab의 소식을 전합니다."
+    en: "Papers, talks, awards, and press from PILab."
+---
+<section class="section section--tight">
+  <div class="container">
+    <div class="tabs" role="tablist" data-news-tabs>
+      <button class="tab is-active" data-cat="all">{% include t.html ko="전체" en="All" %} <small>{{ site.posts.size }}</small></button>
+      {%- assign cats = site.posts | map: "category" | uniq -%}
+      {%- for c in cats %}
+      {%- assign _cnt = site.posts | where: "category", c | size %}
+      <button class="tab" data-cat="{{ c }}">
+        {%- case c -%}
+          {%- when "talk" -%}{% include t.html ko="강연" en="Talks" %}
+          {%- when "paper" -%}{% include t.html ko="논문" en="Papers" %}
+          {%- when "award" -%}{% include t.html ko="수상" en="Awards" %}
+          {%- when "recruit" -%}{% include t.html ko="모집" en="Recruiting" %}
+          {%- when "event" -%}{% include t.html ko="행사" en="Events" %}
+          {%- when "press" -%}{% include t.html ko="보도" en="Press" %}
+          {%- else -%}{% include t.html ko="연구실" en="Lab" %}
+        {%- endcase %} <small>{{ _cnt }}</small></button>
+      {%- endfor %}
+    </div>
+    <div class="news-grid">
+      {%- for post in site.posts %}
+      <div data-cat="{{ post.category | default: 'lab' }}">{% include news-card.html post=post %}</div>
+      {%- endfor %}
+    </div>
+  </div>
+</section>

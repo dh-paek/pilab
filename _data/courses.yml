@@ -1,0 +1,79 @@
+# =====================================================================
+#  강의 — Courses 페이지 (Lectures / Tutorials 두 탭)
+#  비어 있으면 안내 문구가 자동으로 표시됩니다.
+# =====================================================================
+
+# ---------------------------------------------------------------------
+#  Lectures — 학기별로 자동 묶음·정렬 (최신 학기가 위)
+#  term 형식: "2027-1"(1학기·Spring) · "2027-1s"(여름) · "2027-2"(2학기·Fall) · "2027-2w"(겨울)
+#  level: undergrad(학부) | grad(대학원)   english: true 이면 '영어강의' 표시
+#  links: 비워 둔 링크는 표시되지 않습니다. 파일은 assets/files/courses/ 에 넣으세요.
+# ---------------------------------------------------------------------
+lectures:
+  - term: "2026-2"
+    code: "DMSE361"
+    title: { ko: "프롬프트 엔지니어링", en: "Prompt Engineering" }
+    level: undergrad
+    english: true
+    credits: 3
+    category: { ko: "전공선택", en: "Major Elective" }
+    schedule: { ko: "월 7–8교시 · 수 9교시 · 가속기ICT융합관 324호", en: "Mon (periods 7–8) · Wed (period 9) · Accelerator ICT Convergence Bldg. 324" }
+    desc:
+      ko: "대규모 언어 모델(LLM)을 활용하는 설계 역량을 프롬프트 엔지니어링에서 컨텍스트 엔지니어링, 하네스 엔지니어링까지 단계적으로 다룹니다. 모빌리티 데이터 해석과 AI 학습·검증 실습을 통해 AI 에이전트 시대의 모빌리티 시스템을 설계하고 운영하는 역량을 기릅니다."
+      en: "Builds layered design skills for working with large language models (LLMs), progressing from prompt engineering to context engineering and harness engineering. Through hands-on practice in mobility data interpretation and AI training and validation, students learn to design and operate mobility systems in the era of AI agents."
+    topics: ["LLM", "Prompt Engineering", "Context Engineering", "AI Agents"]
+    links: { syllabus: "", materials: "" }
+
+  - term: "2026-2"
+    code: "DMSE462"
+    title: { ko: "최적상태추정", en: "Optimal State Estimation" }
+    level: undergrad
+    credits: 3
+    category: { ko: "전공선택", en: "Major Elective" }
+    schedule: { ko: "수 8교시 · 목 6–7교시 · 가속기ICT융합관 324호", en: "Wed (period 8) · Thu (periods 6–7) · Accelerator ICT Convergence Bldg. 324" }
+    desc:
+      ko: "최적 상태추정 기술인 칼만 필터의 수학적 원리를 체계적으로 학습하고, 확장 칼만 필터(EKF), 무향 칼만 필터(UKF), 파티클 필터 등 다양한 변형 필터를 다룹니다. 다중 모델 필터와 다중 객체 추적(MOT) 등 자율주행·모빌리티 분야의 응용 사례를 통해 인지-판단-제어 파이프라인의 핵심인 상태추정 역량을 기릅니다."
+      en: "Covers the mathematical foundations of the Kalman filter for optimal state estimation and its variants, including the extended Kalman filter (EKF), unscented Kalman filter (UKF), and particle filter. Applications in autonomous driving and mobility, such as multiple-model filters and multi-object tracking (MOT), build core state estimation skills for the perception–decision–control pipeline."
+    topics: ["Bayesian Estimation", "Kalman Filter", "EKF · UKF", "Particle Filter", "MOT"]
+    links: { syllabus: "", materials: "" }
+
+# ---------------------------------------------------------------------
+#  Tutorials — 적힌 순서대로 표시됩니다.
+#  url: 제목을 누르면 이동할 대표 페이지
+#  pdf: 강의자료 PDF — assets/files/tutorials/ 에 넣고 경로를 적거나 외부 주소(Google Drive 등)를 적습니다.
+#       비워 두면 'PDF 준비 중'으로 표시됩니다.
+# ---------------------------------------------------------------------
+tutorials:
+  - date: "2024-06-02"
+    title: "Introduction to 4D Radar: Hardware, MIMO, Signal Processing, Dataset, and AI"
+    event: { ko: "IEEE IV 2024 튜토리얼", en: "IEEE IV 2024 Tutorial" }
+    place: { ko: "제주", en: "Jeju, Korea" }
+    note: { ko: "Junfeng Guan (EPFL) 공동 진행", en: "with Junfeng Guan (EPFL)" }
+    url: ""                     # 튜토리얼 페이지 만료 — 링크 없이 제목만 표시
+    pdfs:                       # 파트별 자료. url을 비우면 'PDF n 준비 중'
+      - { label: "PDF 1", url: "" }
+      - { label: "PDF 2", url: "" }
+
+  - date: "2025-05-19"
+    title: "4D Radar Technology and Advanced Sensor Fusion AI: From Hardware and Signal Processing of 4D Radar to Camera and LiDAR Integration in AI"
+    event: { ko: "IEEE ICRA 2025 튜토리얼", en: "IEEE ICRA 2025 Tutorial" }
+    place: { ko: "미국 애틀랜타", en: "Atlanta, USA" }
+    note: { ko: "Junfeng Guan (EPFL) 공동 진행", en: "with Junfeng Guan (EPFL)" }
+    url: "https://sites.google.com/view/icra25-4dradar-tutorial"
+    pdfs:
+      - { label: "PDF 1", url: "https://drive.google.com/file/d/1bvsaCw6w7dZKb5eMo3dUX7x2GO2iZw-O/view" }   # Part 1. Fundamentals of 4D Radar (Junfeng Guan)
+      - { label: "PDF 2", url: "https://drive.google.com/file/d/1cSLB-fKNksPGwFgAP_7mVOa6kGmtaw9I/view" }   # Part 2. 4D Radar and Sensor Fusion AI (백동희)
+
+  - date: "2026-06-01"
+    title: "Shifting Input Paradigms in 4D Radar AI: From Point Clouds to Raw ADC"
+    event: { ko: "IEEE ICRA 2026 Workshop “Radar in Robotics: New Frontiers” 기조강연", en: "Keynote, IEEE ICRA 2026 Workshop “Radar in Robotics: New Frontiers”" }
+    place: { ko: "오스트리아 빈", en: "Vienna, Austria" }
+    url: "https://sites.google.com/view/radar-robotics/home"
+    pdf: ""
+
+  - date: "2026-10-09"
+    title: "Beyond Vision: 4D Radar and Sensor Fusion AI for Robust Perception"
+    event: { ko: "EuMW 2026 EuRAD 단기강좌 SF03 (Co-Chair)", en: "EuMW 2026 EuRAD Short Course SF03 (Co-Chair)" }
+    place: { ko: "영국 런던", en: "London, UK" }
+    url: "https://www.eumw.eu/conferences/workshops-and-short-courses/#sf-03"
+    pdf: ""

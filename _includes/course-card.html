@@ -1,0 +1,31 @@
+{%- assign _c = include.c -%}
+<article class="course-card">
+  <p class="course-head">
+    {%- if _c.code %}<span class="course-code">{{ _c.code }}</span>{% endif %}
+    <span class="tag tag--{% if _c.level == 'grad' %}grad{% else %}undergrad{% endif %}">{% if _c.level == "grad" %}{% include t.html ko="대학원" en="Graduate" %}{% else %}{% include t.html ko="학부" en="Undergraduate" %}{% endif %}</span>
+    {%- if _c.english %}<span class="tag tag--english">{% include t.html ko="영어강의" en="English" %}</span>{% endif %}
+  </p>
+  <h3 class="course-title">{% include t.html v=_c.title %}</h3>
+  <p class="course-meta">
+    {%- if _c.credits %}<span>{{ _c.credits }}{% include t.html ko="학점" en=" credits" %}</span>{% endif %}
+    {%- if _c.category %}<span>{% include t.html v=_c.category %}</span>{% endif %}
+    {%- if _c.term and include.show_term %}<span>{% include term.html t=_c.term %}</span>{% endif %}
+  </p>
+  {%- if _c.schedule %}
+  <p class="course-schedule">{% include icon.html name="pin" size=15 %} {% include t.html v=_c.schedule %}</p>
+  {%- endif %}
+  {%- if _c.desc %}
+  <p class="course-desc">{% include t.html v=_c.desc %}</p>
+  {%- endif %}
+  {%- if _c.topics and _c.topics.size > 0 %}
+  <ul class="chips">{% for k in _c.topics %}<li>{{ k }}</li>{% endfor %}</ul>
+  {%- endif %}
+  {%- assign _syl = _c.links.syllabus | default: "" -%}
+  {%- assign _mat = _c.links.materials | default: "" -%}
+  {%- if _syl != "" or _mat != "" %}
+  <p class="course-links">
+    {%- if _syl != "" %}<a class="link-arrow" href="{% if _syl contains '://' %}{{ _syl }}{% else %}{{ _syl | relative_url }}{% endif %}" target="_blank" rel="noopener">{% include icon.html name="file" size=16 %} {% include t.html ko="강의계획서" en="Syllabus" %}</a>{% endif %}
+    {%- if _mat != "" %}<a class="link-arrow" href="{% if _mat contains '://' %}{{ _mat }}{% else %}{{ _mat | relative_url }}{% endif %}" target="_blank" rel="noopener">{% include icon.html name="external" size=16 %} {% include t.html ko="강의자료" en="Materials" %}</a>{% endif %}
+  </p>
+  {%- endif %}
+</article>

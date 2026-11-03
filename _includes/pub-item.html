@@ -1,0 +1,36 @@
+{%- assign p = include.p -%}
+{%- assign _main = p.links.pdf | default: p.links.doi | default: p.links.arxiv | default: p.links.project -%}
+<article class="pub{% if include.compact %} pub--compact{% endif %}" data-type="{{ p.type }}" data-scope="{{ p.scope | default: 'intl' }}" data-year="{{ p.year }}" data-search="{{ p.title | downcase | escape }} {{ p.authors | downcase | escape }} {{ p.venue | downcase | escape }} {{ p.short | downcase | escape }}">
+  {%- if include.index %}<span class="pub-num">{{ include.index }}.</span>{% endif %}
+  <div class="pub-body">
+    <p class="pub-meta">
+      {%- if p.award %}<span class="badge badge--award">{{ p.award }}</span>{% endif -%}
+      {%- if p.badge %}<span class="badge badge--{{ p.badge | slugify }}">{{ p.badge }}</span>{% endif -%}
+      <span class="pub-short">{{ p.short | default: p.venue }}</span>
+      {%- unless include.compact %}<span class="pub-type">
+      {%- case p.type -%}
+        {%- when "journal" -%}{% include t.html ko="저널" en="Journal" %}
+        {%- when "conference" -%}{% include t.html ko="학술대회" en="Conference" %}
+        {%- when "preprint" -%}{% include t.html ko="프리프린트" en="Preprint" %}
+        {%- when "patent" -%}{% include t.html ko="특허" en="Patent" %}
+      {%- endcase -%}
+      {%- if p.scope == "domestic" %} · {% include t.html ko="국내" en="Domestic" %}{% endif -%}
+      </span>{% endunless %}
+    </p>
+    <h3 class="pub-title">{% if _main %}<a href="{{ _main }}" target="_blank" rel="noopener">{{ p.title }}</a>{% else %}{{ p.title }}{% endif %}</h3>
+    {%- unless include.compact %}
+    <p class="pub-authors">{{ p.authors }}</p>
+    <p class="pub-venue"><em>{{ p.venue }}</em>, {{ p.year }}</p>
+    {%- if p.links %}
+    <p class="pub-links">
+      {%- if p.links.pdf %}<a class="chip-link" href="{{ p.links.pdf }}" target="_blank" rel="noopener">{% include icon.html name="file" size=14 %}PDF</a>{% endif -%}
+      {%- if p.links.arxiv %}<a class="chip-link" href="{{ p.links.arxiv }}" target="_blank" rel="noopener">{% include icon.html name="file" size=14 %}arXiv</a>{% endif -%}
+      {%- if p.links.doi %}<a class="chip-link" href="{{ p.links.doi }}" target="_blank" rel="noopener">{% include icon.html name="link" size=14 %}DOI</a>{% endif -%}
+      {%- if p.links.code %}<a class="chip-link" href="{{ p.links.code }}" target="_blank" rel="noopener">{% include icon.html name="code" size=14 %}Code</a>{% endif -%}
+      {%- if p.links.project %}<a class="chip-link" href="{{ p.links.project }}" target="_blank" rel="noopener">{% include icon.html name="globe" size=14 %}Project</a>{% endif -%}
+      {%- if p.links.video %}<a class="chip-link" href="{{ p.links.video }}" target="_blank" rel="noopener">{% include icon.html name="play" size=14 %}Video</a>{% endif -%}
+    </p>
+    {%- endif %}
+    {%- endunless %}
+  </div>
+</article>

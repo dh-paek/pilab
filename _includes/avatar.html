@@ -1,0 +1,8 @@
+{%- comment -%} 사진이 있으면 사진, 없으면 영문 이니셜 아바타 {%- endcomment -%}
+{%- assign m = include.m -%}
+{%- if m.photo and m.photo != "" -%}
+<img class="avatar{% if include.class %} {{ include.class }}{% endif %}" src="{{ m.photo | relative_url }}" alt="{{ m.name.en | default: m.name }}" loading="lazy">
+{%- else -%}
+{%- assign _parts = m.name.en | default: m.name | split: " " -%}
+<span class="avatar avatar--initials{% if include.class %} {{ include.class }}{% endif %}" aria-hidden="true">{{ _parts.first | slice: 0 }}{{ _parts.last | slice: 0 }}</span>
+{%- endif -%}

@@ -1,0 +1,87 @@
+# =====================================================================
+#  구성원 — Members 페이지
+#  사진은 assets/img/members/ 에 넣고 photo 경로를 적으세요 (정사각형 권장, 600×750 등).
+#  photo가 비어 있으면 이니셜 아바타가 자동으로 표시됩니다.
+# =====================================================================
+
+pi:
+  name: { ko: "백동희", en: "Dong-Hee Paek" }
+  degree: "Ph.D."
+  role: { ko: "조교수", en: "Assistant Professor" }
+  affiliation:
+    ko: "고려대학교 미래모빌리티학과"
+    en: "Department of Future Mobility, Korea University"
+  photo: "/assets/img/members/dong-hee-paek.jpg"
+  email: "dhpaek@korea.ac.kr"
+  bio:
+    ko: "4D 레이더 AI 인지와 센서 융합을 연구합니다. KAIST에서 학위를 받았으며, 70여 개 글로벌 기관이 사용하는 대규모 4D 레이더 데이터셋 K-Radar(NeurIPS 2022)를 구축했습니다. 칼만 필터·베이지안 상태 추정, FMCW·MIMO 레이더 신호처리, 자율주행용 딥러닝을 아우르며, IEEE ICRA·IV 튜토리얼과 EuMW 단기강좌를 통해 4D 레이더 AI 연구 커뮤니티와 활발히 교류하고 있습니다."
+    en: "Prof. Paek works on AI perception with 4D radar and multi-modal sensor fusion. He built K-Radar (NeurIPS 2022), a large-scale 4D radar dataset now used by 70+ institutions worldwide. His expertise spans Kalman filtering and Bayesian state estimation, FMCW/MIMO radar signal processing, and deep learning for autonomous driving, and he has organized tutorials at IEEE ICRA and IV and a short course at EuMW."
+  education:
+    - period: "2025.10 – 2026.08"
+      period_en: "Oct 2025 – Aug 2026"
+      ko: "KAIST 박사후연구원"
+      en: "Postdoctoral Researcher, KAIST"
+    - period: "2025.08"
+      period_en: "Aug 2025"
+      ko: "KAIST 공학박사 (Graduate School of Mobility)"
+      en: "Ph.D., Graduate School of Mobility, KAIST"
+    - period: "2021.08"
+      period_en: "Aug 2021"
+      ko: "KAIST 공학석사 (Robotics Program)"
+      en: "M.S., Robotics Program, KAIST"
+    - period: "2019.08"
+      period_en: "Aug 2019"
+      ko: "광운대학교 공학사 (Robotics)"
+      en: "B.S., Robotics, Kwangwoon University"
+  career:
+    - period: "2026.09 – 현재"
+      period_en: "Sep 2026 – Present"
+      ko: "고려대학교 세종캠퍼스 미래모빌리티학과 조교수"
+      en: "Assistant Professor, Dept. of Future Mobility, Korea University Sejong"
+    - period: "2024 – 2025"
+      ko: "제타모빌리티 Senior Research Engineer (자율주행 센서퓨전 AI)"
+      en: "Senior Research Engineer, Zeta Mobility (AI sensor fusion for autonomous driving)"
+  honors:
+    - ko: "KAIST Global Leadership Award (총장상)"
+      en: "KAIST Global Leadership Award (President's Award)"
+    - ko: "K-Radar, 2022년 KAIST 주요 연구성과 선정"
+      en: "K-Radar selected as a KAIST Research Highlight of 2022"
+  talks:
+    - year: "2026"
+      ko: "EuMW 2026 (London) EuRAD 단기강좌 SF03 “Beyond Vision: 4D Radar and Sensor Fusion AI for Robust Perception” Co-Chair"
+      en: "Co-Chair, EuRAD Short Course SF03 “Beyond Vision: 4D Radar and Sensor Fusion AI for Robust Perception”, EuMW 2026, London"
+    - year: "2026"
+      ko: "IEEE ICRA 2026 (Vienna) 튜토리얼 “Shifting Input Paradigms in 4D Radar AI: From Point Clouds to Raw ADC” 및 Radar Workshop 초청 강연"
+      en: "Tutorial “Shifting Input Paradigms in 4D Radar AI: From Point Clouds to Raw ADC” and invited talk at the Radar Workshop, IEEE ICRA 2026, Vienna"
+    - year: ""
+      ko: "IEEE ICRA · IV half-day 튜토리얼 진행"
+      en: "Half-day tutorials at IEEE ICRA and IEEE IV"
+
+# ---------------------------------------------------------------------
+#  재학생 — 그룹 순서대로 표시됩니다. 비어 있으면 '모집 중' 카드가 대신 표시됩니다.
+#  program 예: 박사과정 / 석박통합과정 / 석사과정 / 학부연구생
+# ---------------------------------------------------------------------
+groups:
+  - id: grad
+    title: { ko: "대학원생", en: "Graduate Students" }
+    members: []
+    # - name: { ko: "홍길동", en: "Gil-Dong Hong" }
+    #   program: { ko: "석사과정", en: "M.S. Student" }
+    #   since: "2027.03"
+    #   photo: /assets/img/members/gildong.jpg
+    #   email: gildong@korea.ac.kr
+    #   interests: { ko: "4D 레이더 객체 검출", en: "4D radar object detection" }
+    #   leader: false
+    #   links: { github: "", homepage: "", cv: "" }
+
+  - id: undergrad
+    title: { ko: "학부연구생", en: "Undergraduate Researchers" }
+    members: []
+
+# ---------------------------------------------------------------------
+#  졸업생
+# ---------------------------------------------------------------------
+alumni: []
+# - name: { ko: "홍길동", en: "Gil-Dong Hong" }
+#   degree: { ko: "석사 (2029.02)", en: "M.S. (Feb 2029)" }
+#   now: { ko: "현대자동차", en: "Hyundai Motor Company" }

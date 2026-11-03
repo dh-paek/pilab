@@ -1,0 +1,53 @@
+---
+layout: page
+title: Projects
+slug: projects
+permalink: /projects/
+hero:
+  big: "Projects"
+  title: { ko: "연구 과제", en: "Research Projects" }
+  desc:
+    ko: "정부·산업체와 함께 수행하는 연구 과제를 소개합니다."
+    en: "Research projects with government and industry partners."
+---
+{%- assign pj = site.data.projects -%}
+<section class="section section--tight">
+  <div class="container">
+    {%- if pj.ongoing.size > 0 %}
+    <div class="project-grid">
+      {%- for x in pj.ongoing %}
+      <article class="project-card">
+        <p class="project-period">{{ x.period }}</p>
+        <h3>{% include t.html v=x.title %}</h3>
+        <p class="project-funder">{% include t.html v=x.funder %}{% if x.program %} <span>·</span> {% include t.html v=x.program %}{% endif %}{% if x.role %} <span class="pill">{% include t.html v=x.role %}</span>{% endif %}</p>
+      </article>
+      {%- endfor %}
+    </div>
+    {%- else %}
+    <div class="empty-card">
+      {% include icon.html name="briefcase" size=28 %}
+      <p>{% include t.html ko="2026년 9월 개소한 신설 연구실로, 진행 과제가 곧 업데이트될 예정입니다.<br>산학·공동연구 제안은 언제든 환영합니다." en="PILab opened in September 2026 — projects will be listed here soon.<br>Industry and academic collaboration proposals are always welcome." %}</p>
+      <a class="btn btn-outline" href="mailto:{{ site.lab.email }}?subject=%5BPILab%5D%20Collaboration">{% include t.html ko="공동연구 문의" en="Contact for collaboration" %} {% include icon.html name="arrow" size=16 %}</a>
+    </div>
+    {%- endif %}
+
+    {%- if pj.completed.size > 0 %}
+    {%- assign by_year = pj.completed | group_by: "year" | sort: "name" | reverse -%}
+    <div class="section-gap"></div>
+    <p class="eyebrow">COMPLETED</p>
+    <h2 class="section-title">{% include t.html ko="수행한 과제" en="Completed Projects" %}</h2>
+    <div class="project-years">
+      {%- for g in by_year %}
+      <div class="project-year">
+        <h3>{{ g.name }}</h3>
+        <ul>
+          {%- for x in g.items %}
+          <li><span class="project-period">{{ x.period }}</span><b>{% include t.html v=x.title %}</b><span class="muted"> / {% include t.html v=x.funder %}</span></li>
+          {%- endfor %}
+        </ul>
+      </div>
+      {%- endfor %}
+    </div>
+    {%- endif %}
+  </div>
+</section>

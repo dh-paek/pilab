@@ -1,0 +1,22 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0d1830">
+<script>
+  /* 언어 결정: ?lang=en|ko → 저장된 선택 → 브라우저 언어. 깜빡임 방지를 위해 head에서 바로 실행 */
+  (function () {
+    var d = document.documentElement, l = null, q = null;
+    try { q = new URLSearchParams(location.search).get("lang"); } catch (e) {}
+    try { l = q || localStorage.getItem("pilab-lang"); } catch (e) { l = q; }
+    if (!l) l = (navigator.language || "ko").toLowerCase().indexOf("ko") === 0 ? "ko" : "en";
+    if (l !== "ko" && l !== "en") l = "ko";
+    if (q) { try { localStorage.setItem("pilab-lang", l); } catch (e) {} }
+    d.setAttribute("data-lang", l); d.setAttribute("lang", l);
+  })();
+</script>
+{% seo %}
+<link rel="icon" href="{{ '/assets/img/favicon.svg' | relative_url }}" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">

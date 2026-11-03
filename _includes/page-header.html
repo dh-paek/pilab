@@ -1,0 +1,12 @@
+{%- assign h = page.hero -%}
+<section class="page-hero">
+  <div class="radar-rings" aria-hidden="true"></div>
+  <div class="container page-hero-inner">
+    <h1 class="page-hero-big">{{ h.big }}</h1>
+    <div class="page-hero-meta">
+      <p class="page-hero-title">{% include t.html v=h.title %}</p>
+      {%- if h.desc %}<p class="page-hero-desc">{% include t.html v=h.desc %}</p>{% endif %}
+    </div>
+  </div>
+  <div class="container"><span class="page-hero-bar"></span></div>
+</section>

@@ -1,0 +1,10 @@
+{%- comment -%}
+  다국어 출력 헬퍼
+  사용법 1) {% include t.html v=page.title %}       — v가 {ko, en} 해시이면 두 언어를, 문자열이면 그대로 출력
+  사용법 2) {% include t.html ko="연구 분야" en="Research" %}
+  KO/EN 토글은 <span lang="ko">/<span lang="en">을 CSS로 숨기고 보여주는 방식입니다.
+{%- endcomment -%}
+{%- if include.v -%}
+{%- assign _tv = include.v -%}
+{%- if _tv.ko or _tv.en -%}<span lang="ko">{{ _tv.ko | default: _tv.en }}</span><span lang="en">{{ _tv.en | default: _tv.ko }}</span>{%- else -%}{{ _tv }}{%- endif -%}
+{%- else -%}<span lang="ko">{{ include.ko | default: include.en }}</span><span lang="en">{{ include.en | default: include.ko }}</span>{%- endif -%}

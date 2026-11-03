@@ -1,0 +1,134 @@
+---
+layout: default
+slug: home
+---
+{%- assign latest = site.posts.first -%}
+
+<!-- ============================ HERO ============================ -->
+<section class="hero">
+  <div class="hero-text">
+    <div class="hero-text-inner">
+      {%- if site.lab.tagline_top != "" %}
+      <p class="eyebrow eyebrow--light">{{ site.lab.tagline_top }}</p>
+      {%- endif %}
+      <h1 class="hero-title">{% include t.html v=site.lab.hero_title %}</h1>
+      <p class="hero-lab">{{ site.lab.name.en }} <span>·</span> <span lang="ko">{{ site.lab.name.ko }}</span><span lang="en">PILab</span></p>
+      <p class="hero-sub">{% include t.html v=site.lab.hero_sub %}</p>
+      <div class="hero-actions">
+        <a class="btn btn-light" href="{{ '/research/' | relative_url }}">{% include t.html ko="연구 분야" en="Our Research" %} {% include icon.html name="arrow" size=16 %}</a>
+        <a class="btn btn-ghost-light" href="{{ '/join/' | relative_url }}">{% include t.html ko="함께하기" en="Join Us" %}</a>
+      </div>
+      {%- if latest %}
+      <a class="hero-latest" href="{{ latest.url | relative_url }}">
+        <span class="hero-latest-date">{{ latest.date | date: "%Y.%m" }} · LATEST</span>
+        <span class="hero-latest-title">{% include t.html v=latest.headline %}</span>
+      </a>
+      {%- endif %}
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    {%- if site.data.hero.slides and site.data.hero.slides.size > 0 %}
+    <div class="hero-slides" data-slides>
+      {%- for s in site.data.hero.slides %}
+      <figure class="hero-slide{% if forloop.first %} is-active{% endif %}">
+        <img src="{{ s.image | relative_url }}" alt="{{ s.alt | default: '' }}"{% unless forloop.first %} loading="lazy"{% endunless %}>
+        {%- if s.caption %}<figcaption>{% include t.html v=s.caption %}</figcaption>{% endif %}
+      </figure>
+      {%- endfor %}
+    </div>
+    {%- else %}
+    <canvas class="radar-canvas" id="radar-canvas" aria-label="Animated 4D radar bird's-eye-view visualization" role="img"></canvas>
+    <div class="radar-hud" aria-hidden="true">
+      <span class="hud-tl">4D RADAR · BEV</span>
+      <span class="hud-tr">RANGE 0–80 m</span>
+      <span class="hud-bl"><i class="dot dot--in"></i>approaching <i class="dot dot--out"></i>receding</span>
+      <span class="hud-br">FOV ±60°</span>
+    </div>
+    {%- endif %}
+  </div>
+</section>
+
+<!-- ========================== RESEARCH ========================== -->
+<section class="section section--home">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Research <span class="dim">· {{ site.data.research.size | prepend: "0" | slice: -2, 2 }} areas</span></p>
+        <h2 class="section-title">{% include t.html ko="연구 분야" en="Research Areas" %}</h2>
+      </div>
+      <a class="btn btn-outline" href="{{ '/research/' | relative_url }}">{% include t.html ko="연구 더 보기" en="More research" %} {% include icon.html name="arrow" size=16 %}</a>
+    </div>
+    <div class="area-grid">
+      {%- for a in site.data.research %}
+      <a class="area" href="{{ '/research/' | relative_url }}#{{ a.id }}" data-idx="{{ forloop.index | prepend: '0' | slice: -2, 2 }}">
+        <span class="area-icon">{% include icon.html name=a.icon size=22 %}</span>
+        <h3 class="area-title">{% include t.html v=a.title %}</h3>
+        <p class="area-text">{% include t.html v=a.summary %}</p>
+      </a>
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ============================ NEWS ============================ -->
+<section class="section section--home section--line">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">News <span class="dim">· latest</span></p>
+        <h2 class="section-title">{% include t.html ko="연구실 소식" en="Lab News" %}</h2>
+      </div>
+      <a class="btn btn-outline" href="{{ '/news/' | relative_url }}">{% include t.html ko="소식 더 보기" en="More news" %} {% include icon.html name="arrow" size=16 %}</a>
+    </div>
+    <div class="news-home">
+      {%- for post in site.posts limit: 1 %}
+      {% include news-card.html post=post feature=true %}
+      {%- endfor %}
+      <div class="news-home-side">
+        {%- for post in site.posts offset: 1 limit: 2 %}
+        {% include news-card.html post=post row=true %}
+        {%- endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================== PUBLICATIONS ======================== -->
+<section class="section section--home section--line">
+  <div class="container">
+    {%- assign n_papers = site.data.publications | where_exp: "p", "p.type != 'patent'" | size %}
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Publications <span class="dim">· {{ n_papers }} papers</span></p>
+        <h2 class="section-title">{% include t.html ko="주요 논문" en="Selected Papers" %}</h2>
+      </div>
+      <a class="btn btn-outline" href="{{ '/publications/' | relative_url }}">{% include t.html ko="논문 더 보기" en="More papers" %} {% include icon.html name="arrow" size=16 %}</a>
+    </div>
+    <div class="home-pubs">
+      {%- assign hl = site.data.publications | where: "highlight", true -%}
+      {%- for p in hl limit: 5 %}
+      {% include pub-item.html p=p compact=true %}
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ============================ JOIN ============================ -->
+<section class="section section--home section--line">
+  <div class="container">
+  <div class="join-band">
+    <div>
+      <p class="eyebrow">Join PILab <span class="pill">{% include t.html ko="2027학년도 모집" en="Recruiting for 2027" %}</span></p>
+      <h2 class="join-title">{% include t.html ko="<em>센서 AI 기술</em>을 함께 만들어갈 연구원을 찾습니다" en="We're looking for researchers to build <em>sensor AI</em> with us" %}</h2>
+      <p class="muted">{% include t.html ko="대학원 진학(석사 · 박사 · 석박통합)과 학부 인턴 지원은 연중 열려 있습니다." en="Graduate applications (M.S., Ph.D., integrated) and undergraduate internships are open all year." %}</p>
+      <a class="link-arrow" href="{{ '/join/' | relative_url }}">{% include t.html ko="지원 절차 알아보기" en="See the application steps" %} {% include icon.html name="arrow" size=16 %}</a>
+    </div>
+    <div class="join-contact">
+      <p class="join-contact-label">{% include icon.html name="mail" size=18 %} {% include t.html ko="대학원 진학 · 산학협력 연락처" en="Graduate admissions & partnerships" %}</p>
+      <p class="join-email">{{ site.lab.email }}</p>
+      <a class="btn btn-crimson btn-block" href="mailto:{{ site.lab.email }}?subject=%5BPILab%5D%20">{% include t.html ko="메일로 문의하기" en="Email us" %} {% include icon.html name="external" size=16 %}</a>
+    </div>
+  </div>
+  </div>
+</section>

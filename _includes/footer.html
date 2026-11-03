@@ -1,0 +1,30 @@
+<footer class="site-footer">
+  <svg class="footer-pi" viewBox="0 0 40 40" fill="none" aria-hidden="true"><g stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8.6 15.2C9.6 12.4 11.6 11.4 14.6 11.4H31.4"/><path d="M16.4 11.6C16.4 18.4 15.6 23.8 12.6 28.6"/><path d="M25.4 11.6V25.2C25.4 28 27.4 29 30 27.4"/></g></svg>
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <p class="footer-name"><strong>{{ site.lab.short }}</strong> · {% include t.html v=site.lab.name %}</p>
+      <p>{% if site.lab.student_room %}{% include t.html v=site.lab.student_room %}{% else %}{% include t.html v=site.lab.affiliation %}{% endif %}</p>
+      <p>{% include t.html v=site.lab.address %}</p>
+    </div>
+    <div>
+      <p class="footer-label">CONTACT</p>
+      <p><a href="mailto:{{ site.lab.email }}">{{ site.lab.email }}</a></p>
+      {%- if site.lab.phone != "" %}<p>TEL {{ site.lab.phone }}</p>{% endif %}
+      <p>{% include t.html v=site.lab.office %}</p>
+    </div>
+    <div>
+      <p class="footer-label">LINKS</p>
+      <ul class="footer-links">
+        {%- if site.links.google_scholar != "" %}<li><a href="{{ site.links.google_scholar }}" target="_blank" rel="noopener">Google Scholar</a></li>{% endif %}
+        {%- if site.links.github != "" %}<li><a href="{{ site.links.github }}" target="_blank" rel="noopener">GitHub</a></li>{% endif %}
+        {%- if site.links.orcid != "" %}<li><a href="{{ site.links.orcid }}" target="_blank" rel="noopener">ORCID</a></li>{% endif %}
+        {%- if site.links.department != "" %}<li><a href="{{ site.links.department }}" target="_blank" rel="noopener">{% include t.html ko="미래모빌리티학과" en="Dept. of Future Mobility" %}</a></li>{% endif %}
+        <li><a href="{{ site.links.university }}" target="_blank" rel="noopener">{% include t.html ko="고려대학교 세종캠퍼스" en="Korea University Sejong" %}</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <p>© {{ site.time | date: "%Y" }} {{ site.lab.short }}, Korea University. All rights reserved.</p>
+    <a href="#top" class="to-top">TOP ↑</a>
+  </div>
+</footer>

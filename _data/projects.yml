@@ -1,0 +1,20 @@
+# =====================================================================
+#  연구 과제 — Projects 페이지
+#  ongoing: 진행 중 과제 (카드) / completed: 완료 과제 (연도별 목록)
+#  비어 있으면 안내 문구가 자동으로 표시됩니다.
+# =====================================================================
+
+ongoing: []
+# - title:
+#     ko: "4D 레이더 기반 전천후 자율주행 인지 기술 개발"
+#     en: "All-weather autonomous driving perception with 4D radar"
+#   period: "2027.03 – 2029.12"
+#   funder: { ko: "한국연구재단", en: "National Research Foundation of Korea (NRF)" }
+#   program: { ko: "우수신진연구", en: "Excellent Young Researcher Program" }
+#   role: { ko: "주관", en: "PI" }
+
+completed: []
+# - title: { ko: "...", en: "..." }
+#   period: "2027.03 – 2027.12"
+#   year: 2027
+#   funder: { ko: "...", en: "..." }

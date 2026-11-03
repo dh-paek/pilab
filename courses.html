@@ -1,0 +1,80 @@
+---
+layout: page
+title: Courses
+slug: courses
+permalink: /courses/
+hero:
+  big: "Courses"
+  title: { ko: "강의", en: "Courses" }
+  desc:
+    ko: "고려대학교 세종캠퍼스 정규 강의와 국제학회 튜토리얼·단기강좌를 소개합니다."
+    en: "Lectures at Korea University Sejong, and tutorials and short courses at international conferences."
+---
+{%- assign cs = site.data.courses -%}
+{%- assign lectures = cs.lectures | default: empty -%}
+{%- assign tutorials = cs.tutorials | default: empty -%}
+<section class="section section--tight">
+  <div class="container">
+    <!-- ============ Lectures ============ -->
+    <div id="lectures" class="course-section">
+      <p class="eyebrow">Lectures</p>
+      <h2 class="section-title">{% include t.html ko="강의" en="Lectures" %}</h2>
+      {%- if lectures.size > 0 %}
+      {%- assign by_term = lectures | group_by: "term" | sort: "name" | reverse -%}
+      {%- for g in by_term %}
+      <div class="term-block">
+        <h3 class="term-title">{% include term.html t=g.name %}</h3>
+        <div class="course-grid">
+          {%- for c in g.items %}
+          {% include course-card.html c=c %}
+          {%- endfor %}
+        </div>
+      </div>
+      {%- endfor %}
+      {%- else %}
+      <div class="empty-card">
+        {% include icon.html name="book" size=28 %}
+        <p>{% include t.html ko="강의 정보는 학기별 개설이 확정되는 대로 업데이트됩니다." en="Courses will be listed here once each term's offerings are confirmed." %}</p>
+      </div>
+      {%- endif %}
+    </div>
+
+    <div class="section-gap"></div>
+
+    <!-- ============ Tutorials ============ -->
+    <div id="tutorials" class="course-section">
+      <p class="eyebrow">Tutorials</p>
+      <h2 class="section-title">{% include t.html ko="튜토리얼" en="Tutorials" %}</h2>
+      <p class="section-lead">{% include t.html ko="4D 레이더의 하드웨어·신호처리 기초부터 레이더 AI, 카메라·LiDAR와의 센서 융합까지 레이더 인지 기술 전반을 다룬 국제학회 튜토리얼과 단기강좌입니다. 악천후에서도 강건한 자율주행·로보틱스 인지를 위한 핵심 개념과 최신 연구 동향을 한 흐름으로 정리했습니다." en="Tutorials and short courses at international conferences covering radar perception end to end, from 4D radar hardware and signal processing to radar AI and sensor fusion with cameras and LiDAR. Each one walks through the key concepts and recent advances behind robust, all-weather perception for autonomous driving and robotics." %}</p>
+      {%- if tutorials.size > 0 %}
+      <ol class="tut-list">
+        {%- for x in tutorials %}
+        <li class="tut">
+          <time class="tut-date" datetime="{{ x.date }}">{{ x.date | date: "%Y.%m.%d" }}</time>
+          <div class="tut-body">
+            <h3 class="tut-title">{% if x.url and x.url != "" %}<a href="{{ x.url }}" target="_blank" rel="noopener">{{ x.title }} {% include icon.html name="external" size=15 %}</a>{% else %}{{ x.title }}{% endif %}</h3>
+            <p class="tut-meta">{% include t.html v=x.event %}{% if x.place %}<span class="sep">·</span>{% include t.html v=x.place %}{% endif %}{% if x.note %}<span class="sep">·</span>{% include t.html v=x.note %}{% endif %}</p>
+          </div>
+          <div class="tut-action">
+            {%- if x.pdfs %}
+            {%- for f in x.pdfs %}
+            {%- if f.url and f.url != "" %}
+            <a class="btn btn-outline btn-sm" href="{% if f.url contains '://' %}{{ f.url }}{% else %}{{ f.url | relative_url }}{% endif %}" target="_blank" rel="noopener"{% unless f.url contains '://' %} download{% endunless %}>{% include icon.html name="file" size=16 %} {{ f.label | default: "PDF" }}</a>
+            {%- else %}
+            <span class="tut-pending">{% include icon.html name="file" size=16 %} {{ f.label | default: "PDF" }} {% include t.html ko="준비 중" en="coming soon" %}</span>
+            {%- endif %}
+            {%- endfor %}
+            {%- elsif x.pdf and x.pdf != "" %}
+            <a class="btn btn-outline btn-sm" href="{% if x.pdf contains '://' %}{{ x.pdf }}{% else %}{{ x.pdf | relative_url }}{% endif %}" target="_blank" rel="noopener"{% unless x.pdf contains '://' %} download{% endunless %}>{% include icon.html name="file" size=16 %} PDF</a>
+            {%- else %}
+            <span class="tut-pending">{% include icon.html name="file" size=16 %} {% include t.html ko="PDF 준비 중" en="PDF coming soon" %}</span>
+            {%- endif %}
+          </div>
+        </li>
+        {%- endfor %}
+      </ol>
+      {%- endif %}
+      <p class="tut-note">※ <span lang="ko">원본 PPT 자료가 필요하신 경우, 사용 목적과 함께 <a href="mailto:{{ site.lab.email }}?subject=%5BPILab%5D%20Tutorial%20slides%20request">{{ site.lab.email }}</a>로 메일 주세요.</span><span lang="en">If you need the original PPT slides, please email <a href="mailto:{{ site.lab.email }}?subject=%5BPILab%5D%20Tutorial%20slides%20request">{{ site.lab.email }}</a> with your intended purpose.</span></p>
+    </div>
+  </div>
+</section>

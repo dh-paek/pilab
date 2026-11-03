@@ -1,0 +1,11 @@
+{%- comment -%} 학기 표기: {% include term.html t="2027-1" %} → 2027년 1학기 / Spring 2027 (형식은 _data/courses.yml 참고) {%- endcomment -%}
+{%- assign _tp = include.t | append: "" | split: "-" -%}
+{%- assign _ty = _tp[0] -%}
+{%- case _tp[1] -%}
+  {%- when "1" -%}{%- assign _tko = "1학기" -%}{%- assign _ten = "Spring" -%}
+  {%- when "1s" -%}{%- assign _tko = "여름학기" -%}{%- assign _ten = "Summer" -%}
+  {%- when "2" -%}{%- assign _tko = "2학기" -%}{%- assign _ten = "Fall" -%}
+  {%- when "2w" -%}{%- assign _tko = "겨울학기" -%}{%- assign _ten = "Winter" -%}
+  {%- else -%}{%- assign _tko = _tp[1] -%}{%- assign _ten = _tp[1] -%}
+{%- endcase -%}
+<span lang="ko">{{ _ty }}년 {{ _tko }}</span><span lang="en">{{ _ten }} {{ _ty }}</span>

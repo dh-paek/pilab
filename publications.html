@@ -1,0 +1,85 @@
+---
+layout: page
+title: Publications
+slug: publications
+permalink: /publications/
+hero:
+  big: "Publications"
+  title: { ko: "논문과 특허", en: "Papers & Patents" }
+  desc:
+    ko: "제목을 누르면 원문으로 이동합니다."
+    en: "Click a title to open the paper."
+---
+{%- assign pubs = site.data.publications -%}
+{%- assign n_journal = pubs | where: "type", "journal" | size -%}
+{%- assign n_conf = pubs | where: "type", "conference" | size -%}
+{%- assign n_pre = pubs | where: "type", "preprint" | size -%}
+{%- assign n_pat = pubs | where: "type", "patent" | size -%}
+{%- assign n_top = pubs | where: "badge", "Top-tier" | size -%}
+{%- assign n_scie = pubs | where: "badge", "SCIE" | size -%}
+{%- assign by_year = pubs | group_by: "year" | sort: "name" | reverse -%}
+
+<section class="section section--tight">
+  <div class="container">
+    <div class="tabs" role="tablist" data-pub-tabs>
+      <button class="tab is-active" data-type="all" role="tab">{% include t.html ko="전체" en="All" %} <small>{{ pubs.size }}</small></button>
+      <button class="tab" data-type="journal" role="tab">{% include t.html ko="저널" en="Journals" %} <small>{{ n_journal }}</small></button>
+      <button class="tab" data-type="conference" role="tab">{% include t.html ko="학술대회" en="Conferences" %} <small>{{ n_conf }}</small></button>
+      <button class="tab" data-type="preprint" role="tab">{% include t.html ko="프리프린트" en="Preprints" %} <small>{{ n_pre }}</small></button>
+      {%- if n_pat > 0 %}<button class="tab" data-type="patent" role="tab">{% include t.html ko="특허" en="Patents" %} <small>{{ n_pat }}</small></button>{% endif %}
+    </div>
+
+    <div class="pub-filters">
+      <div class="seg" data-pub-scope>
+        <button class="is-active" data-scope="all">{% include t.html ko="전체" en="All" %}</button>
+        <button data-scope="intl">{% include t.html ko="국제" en="Int'l" %}</button>
+        <button data-scope="domestic">{% include t.html ko="국내" en="Domestic" %}</button>
+      </div>
+      <label class="search">
+        {% include icon.html name="search" size=18 %}
+        <input type="search" data-pub-search data-ph-ko="제목, 저자, 학회명 검색" data-ph-en="Search title, author, venue" placeholder="제목, 저자, 학회명 검색" aria-label="Search publications">
+      </label>
+    </div>
+
+    <div class="pub-layout">
+      <div class="pub-list" data-pub-list>
+        <p class="pub-count"><strong data-pub-count>{{ pubs.size }}</strong> {% include t.html ko="건" en="items" %}</p>
+        {%- for g in by_year %}
+        <section class="pub-year" data-year-group>
+          <h2 class="pub-year-title">{{ g.name }}</h2>
+          {%- for p in g.items %}
+          {% include pub-item.html p=p index=forloop.index %}
+          {%- endfor %}
+        </section>
+        {%- endfor %}
+        <p class="empty" data-pub-empty hidden>{% include t.html ko="조건에 맞는 논문이 없습니다." en="No publications match your filter." %}</p>
+      </div>
+
+      <aside class="pub-side">
+        <div class="side-card">
+          <p class="mini-label">{% include t.html ko="성과 요약" en="Summary" %}</p>
+          <p class="side-total"><strong>{{ pubs.size }}</strong> {% include t.html ko="건" en="papers" %} <small>{{ by_year.last.name }}–{{ by_year.first.name }}</small></p>
+          <ul class="side-stats">
+            <li><span>Top-tier (NeurIPS · CVPR)</span><b>{{ n_top }}</b></li>
+            <li><span>SCIE {% include t.html ko="저널" en="journals" %}</span><b>{{ n_scie }}</b></li>
+            <li><span>{% include t.html ko="학술대회" en="Conferences" %}</span><b>{{ n_conf }}</b></li>
+            <li><span>{% include t.html ko="프리프린트" en="Preprints" %}</span><b>{{ n_pre }}</b></li>
+            {%- if n_pat > 0 %}<li><span>{% include t.html ko="특허" en="Patents" %}</span><b>{{ n_pat }}</b></li>{% endif %}
+          </ul>
+          <p class="mini-label">{% include t.html ko="연도별" en="By year" %}</p>
+          {%- assign _max = 1 -%}
+          {%- for g in by_year %}{% if g.size > _max %}{% assign _max = g.size %}{% endif %}{% endfor %}
+          <ul class="year-bars">
+            {%- for g in by_year %}
+            {%- assign _w = g.size | times: 100 | divided_by: _max -%}
+            <li><span>{{ g.name }}</span><i style="--w: {{ _w }}%"></i><b>{{ g.size }}</b></li>
+            {%- endfor %}
+          </ul>
+          {%- if site.links.google_scholar != "" %}
+          <a class="btn btn-outline btn-block" href="{{ site.links.google_scholar }}" target="_blank" rel="noopener">{% include icon.html name="scholar" size=16 %} Google Scholar</a>
+          {%- endif %}
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>

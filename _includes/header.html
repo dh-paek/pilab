@@ -1,0 +1,33 @@
+<a class="skip-link" href="#main">{% include t.html ko="본문 바로가기" en="Skip to content" %}</a>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="{{ '/' | relative_url }}" aria-label="{{ site.lab.short }} home">
+      <img class="brand-mark" src="{{ '/assets/img/logo-mark.svg' | relative_url }}" alt="" width="34" height="34">
+      <span class="brand-word">PI<span>Lab</span><i>.</i></span>
+      <span class="brand-sub">{{ site.lab.name.en }}<br>Korea University</span>
+    </a>
+
+    <nav class="site-nav" id="site-nav" aria-label="Main">
+      <ul>
+        {%- for item in site.data.nav %}
+        {%- assign _active = false -%}
+        {%- if page.url contains item.url -%}{%- assign _active = true -%}{%- endif -%}
+        {%- if item.url == "/news/" and page.layout == "post" -%}{%- assign _active = true -%}{%- endif %}
+        <li><a href="{{ item.url | relative_url }}"{% if _active %} class="is-active" aria-current="page"{% endif %}>{{ item.label }}</a></li>
+        {%- endfor %}
+      </ul>
+      <a class="btn btn-dark nav-cta-mobile" href="{{ '/join/' | relative_url }}">{% include t.html ko="입학·연구 문의" en="Join Us" %}</a>
+    </nav>
+
+    <div class="header-tools">
+      <button class="lang-toggle" type="button" aria-label="Switch language / 언어 전환">
+        <span data-set="ko">KO</span><span class="sep">/</span><span data-set="en">EN</span>
+      </button>
+      <a class="btn btn-dark nav-cta" href="{{ '/join/' | relative_url }}">{% include t.html ko="입학·연구 문의" en="Join Us" %}</a>
+      <button class="nav-toggle" type="button" aria-controls="site-nav" aria-expanded="false" aria-label="Menu">
+        <span class="i-open">{% include icon.html name="menu" size=22 %}</span>
+        <span class="i-close">{% include icon.html name="close" size=22 %}</span>
+      </button>
+    </div>
+  </div>
+</header>

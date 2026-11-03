@@ -1,0 +1,80 @@
+---
+layout: page
+title: Research
+slug: research
+permalink: /research/
+hero:
+  big: "Research"
+  title: { ko: "연구 분야", en: "Research Areas" }
+  desc:
+    ko: "날씨·조명·센서 상태와 관계없이 동작하는 모빌리티 인지 시스템을 목표로 합니다."
+    en: "We build perception for mobility that keeps working regardless of weather, lighting, or sensor condition."
+---
+<section class="section section--tight">
+  <div class="container">
+    <div class="pipeline">
+      <div class="pipeline-head">
+        <h2>{% include t.html ko="센서 신호에서 판단까지, 한 흐름으로" en="From raw signals to decisions — one pipeline" %}</h2>
+        <p class="muted">{% include t.html ko="여섯 연구 분야는 센서 신호에서 시작해 차량·로봇 탑재까지 이어지는 하나의 인지 파이프라인을 이룹니다." en="Our six areas form one perception pipeline, from raw sensor signals to deployment on vehicles and robots." %}</p>
+      </div>
+      <ol class="pipeline-steps" data-pipeline>
+        {%- for a in site.data.research %}
+        <li{% if forloop.first %} class="is-filled is-current"{% endif %}><a href="#{{ a.id }}"><span>{{ forloop.index | prepend: "0" | slice: -2, 2 }}</span>{% include t.html v=a.short %}</a></li>
+        {%- endfor %}
+      </ol>
+    </div>
+
+    <div class="research-grid">
+      {%- for a in site.data.research %}
+      <article class="research-card" id="{{ a.id }}">
+        <header>
+          <span class="research-num">{{ forloop.index | prepend: "0" | slice: -2, 2 }}</span>
+          <div>
+            <h3>{% include t.html v=a.title %}</h3>
+            <p class="research-en">{{ a.title.en }}</p>
+          </div>
+          <span class="area-icon">{% include icon.html name=a.icon size=22 %}</span>
+        </header>
+        {%- assign _fig = a.figure | default: "" -%}
+        {%- assign _ext = _fig | split: "." | last | downcase -%}
+        {%- if _fig != "" %}
+        <figure class="research-figure{% if a.figure_labels %} research-figure--labeled{% endif %}">
+          {%- if a.figure_labels %}
+          {%- capture _cols %}{% for l in a.figure_labels %}{{ l.w | default: 1 }}fr {% endfor %}{% endcapture %}
+          <div class="figure-labels" style="grid-template-columns: {{ _cols | strip }}">
+            {%- for l in a.figure_labels %}<span{% if l.tone %} class="fl--{{ l.tone }}"{% endif %}>{{ l.text }}</span>{% endfor -%}
+          </div>
+          {%- endif %}
+          {%- if _ext == "mp4" or _ext == "webm" %}
+          <video src="{{ _fig | relative_url }}" autoplay muted loop playsinline preload="metadata" aria-label="{{ a.figure_alt | default: a.title.en | escape }}"></video>
+          {%- else %}
+          <img src="{{ _fig | relative_url }}" alt="{{ a.figure_alt | default: a.title.en | escape }}" loading="lazy">
+          {%- endif %}
+        </figure>
+        {%- else %}
+        <div class="research-figure research-figure--empty" aria-hidden="true">
+          <span class="cover-art">{% include icon.html name=a.icon size=40 stroke=1.3 %}</span>
+          <span class="research-figure-label">FIG. {{ forloop.index | prepend: "0" | slice: -2, 2 }} · {% include t.html ko="대표 그림 준비 중" en="Figure coming soon" %}</span>
+        </div>
+        {%- endif %}
+        <p class="research-desc">{% include t.html v=a.description %}</p>
+        <ul class="chips">
+          {%- for k in a.keywords %}<li>{{ k }}</li>{% endfor %}
+        </ul>
+        {%- assign _rep = "" | split: "" -%}
+        {%- for p in site.data.publications -%}
+          {%- if p.tags contains a.tag and p.type != "preprint" -%}{%- assign _rep = _rep | push: p -%}{%- endif -%}
+        {%- endfor -%}
+        {%- if _rep.size > 0 %}
+        <div class="research-papers">
+          <p class="mini-label">{% include t.html ko="주요 논문" en="Selected papers" %}</p>
+          {%- for p in _rep limit: 3 %}
+          {% include pub-item.html p=p compact=true %}
+          {%- endfor %}
+        </div>
+        {%- endif %}
+      </article>
+      {%- endfor %}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,499 @@
+# =====================================================================
+#  논문 목록 — Publications 페이지, Home·Research '주요 논문'에 사용
+#
+#  ▶ 새 논문은 "맨 위"에 추가하세요 (최신순으로 유지하면 연도별로 자동 정렬됩니다).
+#
+#  필드 설명
+#    title      논문 제목 (필수)
+#    authors    저자 목록 "A, B, C" (필수)
+#    venue      학회/저널 정식 명칭 (필수)
+#    short      짧은 표기 (예: "NeurIPS 2025") — 카드/배지에 사용
+#    year       연도 (필수, 숫자)
+#    type       journal | conference | preprint | patent   (필수)
+#    scope      intl | domestic   (기본 intl) — 국내 논문은 한글 제목·저자로 적습니다
+#    badge      색 배지 (예: SCIE, KCI, Top-tier)
+#    award      수상 내역 (예: "Best Paper Award")
+#    highlight  true면 Home '주요 논문'에 노출 (파일 순서대로 최대 5편)
+#    tags       research.yml의 tag 값 (radar, fusion, occupancy, tracking, embedded, data)
+#    links      pdf / arxiv / doi / code / project / video  (있는 것만)
+#
+#  ※ 아래 목록은 Crossref·arXiv 메타데이터로 1차 정리한 것입니다. 저자 순서·
+#    게재 정보는 최종 버전과 대조해 확인해 주세요.
+# =====================================================================
+
+# ----------------------------- 2026 -----------------------------
+- title: "RadarGSOcc: Doppler-Aware 3D Semantic Occupancy Prediction Using 4D Radar Tensor with Geometric-Semantic Feature Extraction"
+  authors: "Christofel Rio Goenawan, Dong-Hee Paek, Seung-Hyun Kong"
+  venue: "arXiv preprint"
+  short: "arXiv 2026"
+  year: 2026
+  type: preprint
+  tags: [occupancy, radar]
+  links: { arxiv: "https://arxiv.org/abs/2610.18686" }
+
+- title: "STAR: Scene- and Task-Aware 4D Radar Preprocessing Towards End-to-End Cognitive Radar"
+  authors: "Seung-Hyun Song, Dong-Hee Paek, Seung-Hyun Kong"
+  venue: "arXiv preprint"
+  short: "arXiv 2026"
+  year: 2026
+  type: preprint
+  tags: [data, radar]
+  links: { arxiv: "https://arxiv.org/abs/2609.24151" }
+
+- title: "Stereo 4D Radar for 3D Object Detection: Integrating Geometric Alignment and Absolute Velocity Estimation"
+  authors: "Seung-Hyun Song, Dong-Hee Paek, Woong-Chan Byun, Seung-Hyun Kong"
+  venue: "arXiv preprint"
+  short: "arXiv 2026"
+  year: 2026
+  type: preprint
+  tags: [radar, fusion]
+  links: { arxiv: "https://arxiv.org/abs/2609.02560" }
+
+- title: "Artificial Intelligence for Perception Using 4D Radar"
+  authors: "Dong-Hee Paek, Seung-Hyun Kong"
+  venue: "IEEE Intelligent Transportation Systems Magazine"
+  short: "IEEE ITS Mag. 2026"
+  year: 2026
+  type: journal
+  badge: SCIE
+  highlight: true
+  tags: [radar, fusion, data]
+  links:
+    doi: "https://doi.org/10.1109/MITS.2026.3727096"
+    code: "https://github.com/kaist-avelab/radar-tutorial"
+
+- title: "Hybrid Frequency Estimator of Weak Signals Using Robust Frequency Estimator with SNR Estimation Network-based Selector"
+  authors: "Seung-Hyun Kong, Hee-Yang Jung, Dong-Hee Paek, Woo-Jin Jung"
+  venue: "IEEE Sensors Journal"
+  short: "IEEE Sensors J. 2026"
+  year: 2026
+  type: journal
+  badge: SCIE
+  tags: [data]
+  links: { doi: "https://doi.org/10.1109/JSEN.2026.3728605" }
+
+- title: "Enhanced 3-D Object Detection via Diverse Feature Representations of 4-D Radar Tensor"
+  authors: "Seung-Hyun Song, Dong-Hee Paek, Minh-Quan Dao, Ezio Malis, Seung-Hyun Kong"
+  venue: "IEEE Sensors Journal, vol. 26, no. 5, pp. 7242–7252"
+  short: "IEEE Sensors J. 2026"
+  year: 2026
+  type: journal
+  badge: SCIE
+  tags: [radar]
+  links: { doi: "https://doi.org/10.1109/JSEN.2026.3652543", arxiv: "https://arxiv.org/abs/2502.06114" }
+
+- title: "LiDAR-to-4D Radar Synthesis for Building Large-Scale Tensor Datasets"
+  authors: "Woo-Jin Jung, Dong-Hee Paek, Seung-Hyun Kong"
+  venue: "IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR) — Findings Track"
+  short: "CVPR Findings 2026"
+  year: 2026
+  type: conference
+  badge: Top-tier
+  tags: [data, radar]
+  links: { doi: "https://doi.org/10.1109/CVPRF71909.2026.00090" }
+
+- title: "Structural Knowledge Distillation for Aligning 4D Radar with Vision–Language Models"
+  authors: "Adeeb M. Islam, Dong-Hee Paek, Seung-Hyun Kong"
+  venue: "IEEE Intelligent Vehicles Symposium (IV)"
+  short: "IEEE IV 2026"
+  year: 2026
+  type: conference
+  tags: [fusion, radar]
+  links: { doi: "https://doi.org/10.1109/IV66570.2026.11623924" }
+
+- title: "SRF: Stereo-Radar Fusion for 3D Object Detection in Adverse Weather Conditions"
+  authors: "Batyrbek Mukhatbekov, Dong-Hee Paek, Woo-Jin Jung, Seung-Hyun Kong"
+  venue: "IEEE Intelligent Vehicles Symposium (IV)"
+  short: "IEEE IV 2026"
+  year: 2026
+  type: conference
+  tags: [fusion, radar]
+  links: { doi: "https://doi.org/10.1109/IV66570.2026.11624060" }
+
+- title: "Open-Source Autonomous Driving Software Platforms: Comparison of Autoware and Apollo"
+  authors: "Hee-Yang Jung, Dong-Hee Paek, Seung-Hyun Kong"
+  venue: "IEEE Intelligent Vehicles Symposium (IV)"
+  short: "IEEE IV 2026"
+  year: 2026
+  type: conference
+  links: { doi: "https://doi.org/10.1109/IV66570.2026.11623965" }
+
+- title: "SpikingFusion: 4D Radar, LiDAR, and Camera Fusion via Spiking Neural Network"
+  authors: "Dong-Hee Paek, Seung-Hyun Song, Seung-Hyun Kong"
+  venue: "SSRN preprint"
+  short: "Preprint 2026"
+  year: 2026
+  type: preprint
+  tags: [embedded, fusion]
+  links: { doi: "https://doi.org/10.2139/ssrn.7597565" }
+
+- title: "정확도와 실시간성을 고려한 자율주행 인지 시스템용 4D 레이더 전처리 기법"
+  authors: "정우진, 백동희, 공승현"
+  venue: "한국자동차공학회 논문집"
+  short: "KSAE 논문집 2026"
+  year: 2026
+  type: journal
+  scope: domestic
+  badge: KCI
+  tags: [data, embedded]
+  links: { arxiv: "https://arxiv.org/abs/2609.18542" }   # 영문 프리프린트
+
+- title: "상태 예측 신경망을 활용한 IMM 기반 다중 객체 추적 기술"
+  authors: "임찬빈, 백동희, 공승현"
+  venue: "한국자동차공학회 논문집"
+  short: "KSAE 논문집 2026"
+  year: 2026
+  type: journal
+  scope: domestic
+  badge: KCI
+  tags: [tracking]
+  links: { arxiv: "https://arxiv.org/abs/2609.13307" }   # 영문 프리프린트
+
+- title: "넓은 SNR 범위에서 SAFE 기반 주파수 추정"
+  authors: "정희양, 백동희, 정우진, 공승현"
+  venue: "Journal of Positioning, Navigation, and Timing (JPNT)"
+  short: "JPNT 2026"
+  year: 2026
+  type: journal
+  scope: domestic
+
+# ----------------------------- 2025 -----------------------------
+- title: "Availability-aware Sensor Fusion via Unified Canonical Space"
+  authors: "Dong-Hee Paek, Seung-Hyun Kong"
+  venue: "Advances in Neural Information Processing Systems (NeurIPS)"
+  short: "NeurIPS 2025"
+  year: 2025
+  type: conference
+  badge: Top-tier
+  highlight: true
+  tags: [fusion, radar]
+  links:
+    arxiv: "https://arxiv.org/abs/2503.07029"
+
+- title: "Real-Time Closed-Loop E2E Driving: Dataset Refinement and Causal Reasoning in Digital-Twin Evaluation"
+  authors: "Haechul Chang, Adeeb Mohammed Islam, Siewoo Kim, Dong-Hee Paek, Seung-Hyun Kong"
+  venue: "International Conference on Control, Automation and Systems (ICCAS)"
+  short: "ICCAS 2025"
+  year: 2025
+  type: conference
+  links: { doi: "https://doi.org/10.23919/ICCAS66577.2025.11301207" }
+
+- title: "Efficient On-Chip Implementation of 4D Radar-Based 3D Object Detection on Hailo-8L"
+  authors: "Woong-Chan Byun, Dong-Hee Paek, Seung-Hyun Song, Seung-Hyun Kong"
+  venue: "ITS Asia-Pacific Forum 2025, Suwon, Korea"
+  short: "ITS AP Forum 2025"
+  year: 2025
+  type: conference
+  tags: [embedded, radar]
+  links: { arxiv: "https://arxiv.org/abs/2505.00757" }
+
+- title: "A Survey on Deep Learning-Based Lane Detection Algorithms for Camera and LiDAR"
+  authors: "Min-Hyeok Sun, Seung-Hyun Kong, Dong-Hee Paek"
+  venue: "IEEE Transactions on Intelligent Transportation Systems"
+  short: "IEEE T-ITS 2025"
+  year: 2025
+  type: journal
+  badge: SCIE
+  links: { doi: "https://doi.org/10.1109/TITS.2025.3554695" }
+
+- title: "SwiftPCN: Fast, Implementation-Efficient, and Accurate Point Cloud Completion Network with Flexible Output Resolution"
+  authors: "Kevin Tirta Wijaya, Dong-Hee Paek, Seung-Hyun Kong"
+  venue: "Neurocomputing"
+  short: "Neurocomputing 2025"
+  year: 2025
+  type: journal
+  badge: SCIE
+  tags: [occupancy]
+  links: { doi: "https://doi.org/10.1016/j.neucom.2025.129387" }
+
+- title: "4DR P2T: 4D Radar Tensor Synthesis with Point Clouds"
+  authors: "Woo-Jin Jung, Dong-Hee Paek, Seung-Hyun Kong"
+  venue: "ITS Asia-Pacific Forum 2025, Suwon, Korea"
+  short: "ITS AP Forum 2025"
+  year: 2025
+  type: conference
+  tags: [data]
+  links: { arxiv: "https://arxiv.org/abs/2502.05550" }
+
+- title: "SpikingRTNH: Spiking Neural Network for 4D Radar Object Detection"
+  authors: "Dong-Hee Paek, Seung-Hyun Kong"
+  venue: "IEEE Intelligent Vehicles Symposium (IV)"
+  short: "IEEE IV 2025"
+  year: 2025
+  type: conference
+  highlight: true
+  tags: [embedded, radar]
+  links:
+    doi: "https://doi.org/10.1109/IV64158.2025.11097403"
+    arxiv: "https://arxiv.org/abs/2502.00074"
+
+- title: "Bayesian Approximation-Based Trajectory Prediction and Tracking with 4D Radar"
+  authors: "Dong-In Kim, Dong-Hee Paek, Seung-Hyun Song, Seung-Hyun Kong"
+  venue: "IEEE Intelligent Vehicles Symposium (IV)"
+  short: "IEEE IV 2025"
+  year: 2025
+  type: conference
+  tags: [tracking, radar]
+  links:
+    doi: "https://doi.org/10.1109/IV64158.2025.11097628"
+    arxiv: "https://arxiv.org/abs/2502.01357"
+
+- title: "RTNH+: Enhanced 4D Radar Object Detection Network Using Two-Level Preprocessing and Vertical Encoding"
+  authors: "Seung-Hyun Kong, Dong-Hee Paek, Sangyeong Lee"
+  venue: "IEEE Transactions on Intelligent Vehicles"
+  short: "IEEE T-IV 2025"
+  year: 2025
+  type: journal
+  badge: SCIE
+  highlight: true
+  tags: [radar]
+  links:
+    doi: "https://doi.org/10.1109/TIV.2024.3428696"
+    arxiv: "https://arxiv.org/abs/2310.17659"
+
+- title: "거리–방위각–도플러 기반 적응형 4D 레이더 전처리 기법"
+  authors: "이상영, 백동희, 공승현"
+  venue: "IPNT Conference (한국항법학회 학술대회)"
+  short: "IPNT 2025"
+  year: 2025
+  type: conference
+  scope: domestic
+
+- title: "다중 센서 자동 보정 방법 및 시스템"
+  authors: "백동희, 공승현"
+  venue: "대한민국 특허 출원 10-2025-0071524 (2025.05)"
+  short: "KR 특허출원 2025"
+  year: 2025
+  type: patent
+  scope: domestic
+
+- title: "센서 융합 시스템 및 방법"
+  authors: "백동희, 공승현, 정우진"
+  venue: "대한민국 특허 출원 10-2025-0068977 (2025.05)"
+  short: "KR 특허출원 2025"
+  year: 2025
+  type: patent
+  scope: domestic
+
+- title: "레이더 데이터 합성 학습 시스템 및 방법"
+  authors: "공승현, 백동희, 정우진"
+  venue: "대한민국 특허 출원 10-2025-0012612 (2025.01)"
+  short: "KR 특허출원 2025"
+  year: 2025
+  type: patent
+  scope: domestic
+
+# ----------------------------- 2024 -----------------------------
+- title: "See the Unseen: Grid-Wise Drivable Area Detection Dataset and Network Using LiDAR"
+  authors: "Christofel Rio Goenawan, Dong-Hee Paek, Seung-Hyun Kong"
+  venue: "Remote Sensing"
+  short: "Remote Sensing 2024"
+  year: 2024
+  type: journal
+  badge: SCIE
+  tags: [occupancy, data]
+  links: { doi: "https://doi.org/10.3390/rs16203777" }
+
+- title: "Advanced Feature Learning on Point Clouds Using Multi-Resolution Features and Learnable Pooling"
+  authors: "Kevin Tirta Wijaya, Dong-Hee Paek, Seung-Hyun Kong"
+  venue: "Remote Sensing"
+  short: "Remote Sensing 2024"
+  year: 2024
+  type: journal
+  badge: SCIE
+  links: { doi: "https://doi.org/10.3390/rs16111835" }
+
+- title: "Efficient 4D Radar Data Auto-labeling Method using LiDAR-based Object Detection Network"
+  authors: "Min-Hyeok Sun, Dong-Hee Paek, Seung-Hyun Song, Seung-Hyun Kong"
+  venue: "IEEE Intelligent Vehicles Symposium (IV)"
+  short: "IEEE IV 2024"
+  year: 2024
+  type: conference
+  tags: [data, radar]
+  links:
+    doi: "https://doi.org/10.1109/IV55156.2024.10588669"
+    arxiv: "https://arxiv.org/abs/2407.04709"
+
+- title: "BOC-FPDNet: BOC First Arrival Path Detection in Multipath Channel for GNSS Positioning"
+  authors: "Sangjae Cho, Dong-Hee Paek, Hong-Woo Seok, Seung-Hyun Kong"
+  venue: "IEEE Transactions on Intelligent Vehicles"
+  short: "IEEE T-IV 2024"
+  year: 2024
+  type: journal
+  badge: SCIE
+  links: { doi: "https://doi.org/10.1109/TIV.2024.3354829" }
+
+- title: "IMM 필터를 활용한 4D 레이다와 라이다 센서 융합 기반 3D 객체 추적 기술"
+  authors: "정우진, 백동희, 공승현"
+  venue: "IPNT Conference (한국항법학회 학술대회)"
+  short: "IPNT 2024"
+  year: 2024
+  type: conference
+  scope: domestic
+
+- title: "딥러닝 기반 4D 레이다 오도미트리 추정"
+  authors: "정희양, 백동희, 공승현"
+  venue: "IPNT Conference (한국항법학회 학술대회)"
+  short: "IPNT 2024"
+  year: 2024
+  type: conference
+  scope: domestic
+
+- title: "Joint Detection and Tracking 기반 4D 레이다 3D 다중 객체 추적"
+  authors: "송승현, 백동희, 공승현"
+  venue: "한국자동차공학회 춘계학술대회 (KSAE Spring Conference)"
+  short: "KSAE 춘계 2024"
+  year: 2024
+  type: conference
+  scope: domestic
+
+- title: "4차원 레이더의 포인트 클라우드 필터링 방법 및 데이터 처리 장치"
+  authors: "공승현, 백동희, 한승태"
+  venue: "대한민국 특허 등록 10-2655213 (2024.04)"
+  short: "KR 특허등록 2024"
+  year: 2024
+  type: patent
+  scope: domestic
+
+# ----------------------------- 2023 -----------------------------
+- title: "Enhanced K-Radar: Optimal Density Reduction to Improve Detection Performance and Accessibility of 4D Radar Tensor-based Object Detection"
+  authors: "Dong-Hee Paek, Seung-Hyun Kong, Kevin Tirta Wijaya"
+  venue: "IEEE Intelligent Vehicles Symposium (IV)"
+  short: "IEEE IV 2023"
+  year: 2023
+  type: conference
+  tags: [radar, data]
+  links:
+    doi: "https://doi.org/10.1109/IV55152.2023.10186820"
+    arxiv: "https://arxiv.org/abs/2303.06342"
+
+- title: "METHOD FOR FILTERING POINT CLOUD OF FOUR-DIMENSIONAL RADAR AND DATA PROCESSING DEVICE"
+  authors: "공승현, 백동희, 한승태"
+  venue: "US Patent Application 18/574,547 (2023.12)"
+  short: "US Patent Appl. 2023"
+  year: 2023
+  type: patent
+  scope: intl
+
+- title: "4D 레이다의 효과적인 전처리 방법 및 시스템"
+  authors: "공승현, 백동희"
+  venue: "대한민국 특허 출원 10-2023-0109069 (2023.08)"
+  short: "KR 특허출원 2023"
+  year: 2023
+  type: patent
+  scope: domestic
+
+# ----------------------------- 2022 -----------------------------
+- title: "K-Radar: 4D Radar Object Detection for Autonomous Driving in Various Weather Conditions"
+  authors: "Dong-Hee Paek, Seung-Hyun Kong, Kevin Tirta Wijaya"
+  venue: "Advances in Neural Information Processing Systems (NeurIPS), Datasets and Benchmarks Track"
+  short: "NeurIPS 2022"
+  year: 2022
+  type: conference
+  badge: Top-tier
+  highlight: true
+  tags: [data, radar]
+  links:
+    arxiv: "https://arxiv.org/abs/2206.08171"
+    code: "https://github.com/kaist-avelab/k-radar"
+
+- title: "Row-wise LiDAR Lane Detection Network with Lane Correlation Refinement"
+  authors: "Dong-Hee Paek, Kevin Tirta Wijaya, Seung-Hyun Kong"
+  venue: "IEEE International Conference on Intelligent Transportation Systems (ITSC)"
+  short: "IEEE ITSC 2022"
+  year: 2022
+  type: conference
+  links:
+    doi: "https://doi.org/10.1109/ITSC55140.2022.9922341"
+    arxiv: "https://arxiv.org/abs/2210.08745"
+
+- title: "K-Lane: Lidar Lane Dataset and Benchmark for Urban Roads and Highways"
+  authors: "Dong-Hee Paek, Seung-Hyun Kong, Kevin Tirta Wijaya"
+  venue: "IEEE/CVF Conference on Computer Vision and Pattern Recognition Workshops (CVPRW)"
+  short: "CVPRW 2022"
+  year: 2022
+  type: conference
+  badge: Top-tier
+  tags: [data]
+  links:
+    doi: "https://doi.org/10.1109/CVPRW56347.2022.00491"
+    arxiv: "https://arxiv.org/abs/2110.11048"
+    code: "https://github.com/kaist-avelab/k-lane"
+
+- title: "자율 주행을 위한 딥러닝 기반 라이다 객체 인식 신경망 연구 분석"
+  authors: "선민혁, 백동희, 공승현"
+  venue: "한국자동차공학회 논문집, vol. 30, no. 8, pp. 635–647"
+  short: "KSAE 논문집 2022"
+  year: 2022
+  type: journal
+  scope: domestic
+  badge: KCI
+  links: { doi: "https://doi.org/10.7467/KSAE.2022.30.8.635" }
+
+- title: "Multiview Attention for 3D Object Detection in Lidar Point Cloud"
+  authors: "Kevin Tirta Wijaya, Dong-Hee Paek, Seung-Hyun Kong"
+  venue: "International Conference on Artificial Intelligence in Information and Communication (ICAIIC)"
+  short: "ICAIIC 2022"
+  year: 2022
+  type: conference
+  links: { doi: "https://doi.org/10.1109/ICAIIC54071.2022.9722654" }
+
+- title: "3D 레이더와 RTK를 활용한 주행 차량 Odometry 추정 인공지능 신경망에 관한 연구"
+  authors: "선민혁, 백동희, 김동인, Kevin Tirta Wijaya, 공승현"
+  venue: "IPNT Conference (한국항법학회 학술대회)"
+  short: "IPNT 2022"
+  year: 2022
+  type: conference
+  scope: domestic
+
+- title: "앵커 라인을 활용한 라이다 기반 차선 인식 네트워크"
+  authors: "김동인, 백동희, 선민혁, 공승현"
+  venue: "제3회 한국인공지능학술대회 (Korea Artificial Intelligence Conference)"
+  short: "한국인공지능학술대회 2022"
+  year: 2022
+  type: conference
+  scope: domestic
+
+- title: "다양한 조도에 강인한 라이다-카메라 센서 융합 기반 차선 인식 네트워크"
+  authors: "김동인, 백동희, 선민혁, Ryan Gallagher, 공승현"
+  venue: "제3회 한국인공지능학술대회 (Korea Artificial Intelligence Conference)"
+  short: "한국인공지능학술대회 2022"
+  year: 2022
+  type: conference
+  scope: domestic
+
+- title: "인공지능에서의 레이더 포인트 클라우드 및 레이더 텐서 융합 방법 및 데이터 처리 방법 및 시스템"
+  authors: "공승현, 김동인, 선민혁, 백동희"
+  venue: "대한민국 특허 출원 10-2022-0180594 (2022.12)"
+  short: "KR 특허출원 2022"
+  year: 2022
+  type: patent
+  scope: domestic
+
+# ----------------------------- 2021 -----------------------------
+- title: "Enhanced Off-Policy Reinforcement Learning With Focused Experience Replay"
+  authors: "Seung-Hyun Kong, I. Made Aswin Nahrendra, Dong-Hee Paek"
+  venue: "IEEE Access"
+  short: "IEEE Access 2021"
+  year: 2021
+  type: journal
+  badge: SCIE
+  links: { doi: "https://doi.org/10.1109/ACCESS.2021.3085142" }
+
+# ----------------------------- 2020 -----------------------------
+- title: "Reinforcement Learning based End-To-End self-driving Using Variational AutoEncoder"
+  authors: "정승환, 조상재, 백동희, 공승현"
+  venue: "IPNT Conference (한국항법학회 학술대회)"
+  short: "IPNT 2020"
+  year: 2020
+  type: conference
+  scope: domestic
+
+# ----------------------------- 특허 예시 -----------------------------
+# - title: "특허 명칭"
+#   authors: "백동희, 홍길동"
+#   venue: "대한민국 특허 등록 10-XXXXXXX"
+#   short: "KR Patent 2027"
+#   year: 2027
+#   type: patent
+#   scope: domestic
