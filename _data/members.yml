@@ -4,13 +4,15 @@
 #  photo가 비어 있으면 이니셜 아바타가 자동으로 표시됩니다.
 # =====================================================================
 
+show_counts: false   # 그룹 제목 옆 인원 수 표시 (학생이 많아지면 true로)
+
 pi:
   name: { ko: "백동희", en: "Dong-Hee Paek" }
   degree: "Ph.D."
   role: { ko: "조교수", en: "Assistant Professor" }
   affiliation:
     ko: "고려대학교 미래모빌리티학과"
-    en: "Department of Future Mobility, Korea University"
+    en: "Department of Mobility Science and Engineering, Korea University"
   photo: "/assets/img/members/dong-hee-paek.jpg"
   email: "dhpaek@korea.ac.kr"
   bio:
@@ -37,7 +39,7 @@ pi:
     - period: "2026.09 – 현재"
       period_en: "Sep 2026 – Present"
       ko: "고려대학교 세종캠퍼스 미래모빌리티학과 조교수"
-      en: "Assistant Professor, Dept. of Future Mobility, Korea University Sejong"
+      en: "Assistant Professor, Dept. of Mobility Science and Engineering, Korea University Sejong"
     - period: "2024 – 2025"
       ko: "제타모빌리티 Senior Research Engineer (자율주행 센서퓨전 AI)"
       en: "Senior Research Engineer, Zeta Mobility (AI sensor fusion for autonomous driving)"

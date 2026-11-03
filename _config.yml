@@ -6,7 +6,7 @@
 title: "PILab"
 lang: ko_KR
 description: >-
-  Perception and Intelligence Lab (PILab), Department of Future Mobility,
+  Perception and Intelligence Lab (PILab), Department of Mobility Science and Engineering,
   Korea University Sejong Campus. 4D radar AI, multi-modal sensor fusion,
   and robust perception for autonomous mobility.
 
@@ -29,7 +29,7 @@ lab:
     en: "Perception and Intelligence Lab"
     ko: "인지지능연구실"
   affiliation:
-    en: "Department of Future Mobility, Korea University Sejong"
+    en: "Department of Mobility Science and Engineering, Korea University Sejong"
     ko: "고려대학교 세종캠퍼스 미래모빌리티학과"
   tagline_top: ""       # 메인 히어로 제목 위 작은 문구 (비우면 숨김)
   hero_title:

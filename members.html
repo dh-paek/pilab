@@ -67,7 +67,7 @@ hero:
     <!-- ===== Students ===== -->
     <div class="member-groups">
       {%- for g in site.data.members.groups %}
-      <h3 class="group-title">{% include t.html v=g.title %} <small>{{ g.members.size }}</small></h3>
+      <h3 class="group-title">{% include t.html v=g.title %}{% if site.data.members.show_counts %} <small>{{ g.members.size }}</small>{% endif %}</h3>
       <div class="member-grid">
         {%- for m in g.members %}
         <article class="member">
@@ -99,7 +99,7 @@ hero:
 
     {%- if n_alu > 0 %}
     <div class="member-alumni">
-      <h3 class="group-title">{% include t.html ko="졸업생" en="Alumni" %} <small>{{ n_alu }}</small></h3>
+      <h3 class="group-title">{% include t.html ko="졸업생" en="Alumni" %}{% if site.data.members.show_counts %} <small>{{ n_alu }}</small>{% endif %}</h3>
       <ul class="alumni-list">
         {%- for m in site.data.members.alumni %}
         <li><b>{% include t.html v=m.name %}</b><span>{% include t.html v=m.degree %}</span><span>{% include t.html v=m.now %}</span></li>
