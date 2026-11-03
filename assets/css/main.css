@@ -366,7 +366,8 @@ html[data-lang="ko"] .hero-title { font-family: var(--font-sans); font-weight: 8
 .page-hero-big { font-family: var(--font-display); font-weight: 700; font-size: clamp(3rem, 7vw, 5.6rem); line-height: 1; letter-spacing: -0.05em; }
 .page-hero-meta { display: grid; gap: 8px; }
 .page-hero-title { font-size: 1.6rem; font-weight: 800; letter-spacing: -0.03em; }
-.page-hero-desc { color: var(--on-dark-2); font-size: .94rem; max-width: 44ch; }
+.page-hero-desc { color: var(--on-dark-2); font-size: .94rem; max-width: 44ch; min-height: 2lh; }   /* 설명이 1줄이어도 2줄 자리 확보 → 메뉴마다 상단 높이 동일 */
+@media (max-width: 400px) { html[data-lang="en"] .page-hero-desc { min-height: 3lh; } }   /* 아주 좁은 화면의 영문 설명은 최대 3줄 */
 .page-hero-bar { display: block; height: 1px; background: var(--navy-line); position: relative; margin-bottom: 0; }
 .page-hero-bar::before { content: ""; position: absolute; left: 0; top: -1px; width: 96px; height: 3px; background: var(--grad); }
 .page-hero + .page-content { }
