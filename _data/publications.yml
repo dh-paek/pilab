@@ -60,7 +60,7 @@
   tags: [radar, fusion, data]
   links:
     doi: "https://doi.org/10.1109/MITS.2026.3727096"
-    code: "https://github.com/kaist-avelab/radar-tutorial"
+    # code: "https://github.com/kaist-avelab/radar-tutorial"   # 코드 공개되면 주석 해제
 
 - title: "Hybrid Frequency Estimator of Weak Signals Using Robust Frequency Estimator with SNR Estimation Network-based Selector"
   authors: "Seung-Hyun Kong, Hee-Yang Jung, Dong-Hee Paek, Woo-Jin Jung"
