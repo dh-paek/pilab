@@ -170,42 +170,60 @@
   }
 
   /* ---------- 5b. radar BEV animation ----------
-     자차(아래 중앙) 기준 4D 레이더 BEV. 빔이 ±60°를 왕복하며 표적을 비추면
-     도플러 색(접근=빨강, 이탈=파랑)의 반사점과 3D 박스가 나타났다가 서서히 사라집니다. */
+     자차(아래 중앙) 기준 4D 레이더 BEV, 최대 400 m · ±60°. 물체 크기·속도는 실제 m 단위.
+     빔이 시야를 왕복하며 표적을 비추면 도플러 색(접근=빨강, 이탈=파랑)의 반사점과 박스가 나타났다가 서서히 사라집니다. */
   var canvas = document.getElementById("radar-canvas");
   if (!canvas || !canvas.getContext) return;
   var ctx = canvas.getContext("2d");
   var W = 0, H = 0, DPR = 1, ox = 0, oy = 0, scale = 1;
-  var MAX_R = 80, FOV = Math.PI / 3; // 시뮬레이션 좌표 반경(단위), ±60°
-  var RANGE_M = 400;                   // 화면에 표시하는 최대 거리(m) — 링 라벨은 이 값에 맞춰 환산
+  var MAX_R = 400, FOV = Math.PI / 3;  // 실제 거리 400 m, ±60° — 물체 크기·속도도 같은 m 단위
+  var RING = 100;                       // 거리 링 간격 (m)
   var TEAL = "63,213,196", RED = "255,107,107", BLUE = "77,171,255";
 
   function rnd(a, b) { return a + Math.random() * (b - a); }
   function gauss() { return (Math.random() + Math.random() + Math.random() - 1.5) / 1.5; }
+  function xLimit(y) { return Math.max(0, y) * Math.tan(FOV); }  // 거리 y에서 시야 가장자리 x
 
+  /* 장면: 자차 앞 직선 도로(5차로) + 150 m·290 m 지점의 교차 도로 + 보행자.
+     0–6 = 직선 도로 차량, 7–9 = 교차 도로 차량, 10 = 보행자 */
   var lanes = [-7.2, -3.6, 0, 3.6, 7.2];
-  var targets = [];
-  function makeTarget(i) {
-    var ped = i >= 7;
-    var lane = ped ? (Math.random() < .5 ? -11 : 11) + rnd(-1, 1) : lanes[i % lanes.length] + rnd(-.4, .4);
-    var oncoming = !ped && lane < -1;
-    return {
-      kind: ped ? "PED" : (Math.random() < .2 ? "TRUCK" : "CAR"),
-      x: lane, y: rnd(10, 76),
-      vy: ped ? rnd(-.6, .6) : oncoming ? rnd(-16, -10) : rnd(-3.5, 3.5), // 자차 기준 상대속도 (m/s)
-      vx: ped ? rnd(-.5, .5) : 0,
-      len: ped ? .7 : 4.6, wid: ped ? .7 : 1.9,
-      hit: -1e9, pts: [], conf: rnd(.82, .98)
-    };
+  var CROSS_Y = [150, 290];
+  function vehicle(t) {
+    var truck = Math.random() < .2;
+    t.kind = truck ? "TRUCK" : "CAR"; t.len = truck ? 12 : 4.6; t.wid = truck ? 2.5 : 1.9;
+    return t;
   }
-  for (var i = 0; i < 9; i++) targets.push(makeTarget(i));
-  targets.forEach(function (t) { if (t.kind === "TRUCK") { t.len = 8.5; t.wid = 2.4; } });
+  function makeTarget(i, respawn) {
+    var t = { hit: -1e9, pts: [], conf: rnd(.82, .98), vx: 0, vy: 0, role: i >= 10 ? "ped" : i >= 7 ? "cross" : "main" };
+    if (t.role === "main") {
+      vehicle(t);
+      t.x = lanes[i % lanes.length] + rnd(-.4, .4);
+      var oncoming = t.x < -1;
+      t.vy = oncoming ? rnd(-16, -10) : rnd(-4, 4);                 // 자차 기준 상대속도 (m/s)
+      t.y = respawn ? (t.vy < 0 ? rnd(MAX_R - 40, MAX_R) : rnd(6, 20)) : rnd(15, MAX_R - 10);
+    } else if (t.role === "cross") {
+      vehicle(t);
+      var d = Math.random() < .5 ? 1 : -1;
+      t.y = CROSS_Y[i % CROSS_Y.length] + (d > 0 ? -1.8 : 1.8);
+      t.vx = d * rnd(8, 14);
+      var lim = xLimit(t.y);
+      t.x = respawn ? -d * (lim + rnd(0, 10)) : rnd(-lim, lim);
+    } else {
+      t.kind = "PED"; t.len = .7; t.wid = .7;
+      t.x = (Math.random() < .5 ? -11 : 11) + rnd(-1, 1);
+      t.y = rnd(8, 60);
+      t.vy = rnd(-1.4, 1.4); t.vx = rnd(-.3, .3);
+    }
+    return t;
+  }
+  var targets = [];
+  for (var i = 0; i < 11; i++) targets.push(makeTarget(i, false));
 
   var clutter = [];
   function resetClutter() {
     clutter = [];
-    for (var k = 0; k < 70; k++) {
-      var r = rnd(4, MAX_R), a = rnd(-FOV, FOV);
+    for (var k = 0; k < 110; k++) {
+      var r = rnd(6, MAX_R), a = rnd(-FOV, FOV);
       clutter.push({ r: r, a: a, hit: -1e9 });
     }
   }
@@ -225,15 +243,15 @@
 
   function drawGrid() {
     ctx.lineWidth = 1;
-    for (var r = 20; r <= MAX_R; r += 20) {
+    for (var r = RING; r <= MAX_R; r += RING) {
       ctx.strokeStyle = "rgba(255,255,255," + (r === MAX_R ? .22 : .1) + ")";
       ctx.beginPath();
       ctx.arc(ox, oy, r * scale, -Math.PI / 2 - FOV, -Math.PI / 2 + FOV);
       ctx.stroke();
-      var p = toScreen(.8, r);
+      var p = toScreen(-Math.sin(FOV) * r, Math.cos(FOV) * r);   // 거리 라벨은 왼쪽 시야 경계 위 (도로 위 물체 라벨과 겹치지 않게)
       ctx.fillStyle = "rgba(255,255,255,.32)";
       ctx.font = "10px ui-monospace, Menlo, monospace";
-      ctx.fillText(Math.round(r * RANGE_M / MAX_R) + "m", p[0] + 3, p[1] - 4);
+      ctx.fillText(r + "m", p[0] + 6, p[1] + 3);
     }
     for (var d = -60; d <= 60; d += 30) {
       var a = d * Math.PI / 180;
@@ -276,6 +294,7 @@
   }
 
   function drawTargets(t) {
+    var labels = [[ox - 24, oy - 30, 48, 60]];   // 이번 프레임에 그린 라벨 영역(자차 표시 포함) — 겹치면 라벨 생략
     targets.forEach(function (tg) {
       var age = (t - tg.hit) / 1000;
       var alpha = Math.max(0, Math.exp(-age / 1.6));
@@ -283,21 +302,24 @@
       var r = Math.hypot(tg.x, tg.y) || 1;
       var vr = (tg.x * tg.vx + tg.y * tg.vy) / r; // radial velocity
       var col = vr < -.3 ? RED : vr > .3 ? BLUE : "230,236,245";
-      tg.pts.forEach(function (p) {
+      var c = toScreen(tg.x, tg.y), bw = tg.wid * scale, bl = tg.len * scale;   // 실제 크기(m) × 화면 배율
+      ctx.strokeStyle = "rgba(" + TEAL + "," + (alpha * .9) + ")"; ctx.lineWidth = 1;
+      ctx.strokeRect(c[0] - bw / 2, c[1] - bl / 2, bw, bl);
+      tg.pts.forEach(function (p) {   // 반사점은 박스 위에 — 작은 물체에서도 도플러 색이 보이게
         var s = toScreen(tg.x + p[0], tg.y + p[1]);
         ctx.fillStyle = "rgba(" + col + "," + (alpha * .95) + ")";
-        ctx.beginPath(); ctx.arc(s[0], s[1], 2.1, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath(); ctx.arc(s[0], s[1], 1.4, 0, Math.PI * 2); ctx.fill();
       });
-      var c = toScreen(tg.x, tg.y), bw = tg.wid * scale, bl = tg.len * scale;
-      ctx.strokeStyle = "rgba(" + TEAL + "," + (alpha * .9) + ")"; ctx.lineWidth = 1.2;
-      ctx.strokeRect(c[0] - bw / 2, c[1] - bl / 2, bw, bl);
-      if (alpha > .25 && W > 520) {
+      var lx = c[0] + bw / 2 + 5, ly = c[1] - 10, box = [lx, ly, 86, 24];
+      var free = labels.every(function (b) { return lx > b[0] + b[2] || lx + box[2] < b[0] || ly > b[1] + b[3] || ly + box[3] < b[1]; });
+      if (alpha > .25 && W > 520 && free && lx + 80 < W) {
+        labels.push(box);
         ctx.fillStyle = "rgba(" + TEAL + "," + alpha + ")";
         ctx.font = "600 10px ui-monospace, Menlo, monospace";
-        ctx.fillText(tg.kind + " " + tg.conf.toFixed(2), c[0] + bw / 2 + 4, c[1] - bl / 2 + 8);
+        ctx.fillText(tg.kind + " " + tg.conf.toFixed(2), lx, ly + 8);
         ctx.fillStyle = "rgba(255,255,255," + alpha * .55 + ")";
         ctx.font = "10px ui-monospace, Menlo, monospace";
-        ctx.fillText((vr >= 0 ? "+" : "") + vr.toFixed(1) + " m/s", c[0] + bw / 2 + 4, c[1] - bl / 2 + 20);
+        ctx.fillText((vr >= 0 ? "+" : "") + vr.toFixed(1) + " m/s", lx, ly + 20);
       }
     });
     clutter.forEach(function (cl) {
@@ -320,12 +342,10 @@
   function step(dt) {
     targets.forEach(function (tg, idx) {
       tg.y += tg.vy * dt; tg.x += tg.vx * dt;
-      if (tg.y > MAX_R + 6 || tg.y < -2 || Math.abs(tg.x) > 14) {
-        var n = makeTarget(idx);
-        n.y = tg.vy < 0 ? rnd(70, 82) : rnd(6, 12);
-        if (tg.kind === "TRUCK") { n.kind = "TRUCK"; n.len = 8.5; n.wid = 2.4; }
-        targets[idx] = n;
-      }
+      var gone = tg.role === "cross" ? Math.abs(tg.x) > xLimit(tg.y) + 20
+               : tg.role === "ped" ? (tg.y < 3 || tg.y > 70)
+               : (tg.y > MAX_R + 10 || tg.y < -6);
+      if (gone) targets[idx] = makeTarget(idx, true);
     });
   }
 
@@ -348,7 +368,7 @@
     if (running) rafId = requestAnimationFrame(frame);
   }
   function resetClutterPartial() {
-    clutter.forEach(function (c) { if (Math.random() < .5) { c.r = rnd(4, MAX_R); c.a = rnd(-FOV, FOV); } });
+    clutter.forEach(function (c) { if (Math.random() < .5) { c.r = rnd(6, MAX_R); c.a = rnd(-FOV, FOV); } });
   }
   function drawStatic() {
     var t = 1000;

@@ -45,7 +45,6 @@ hero:
     </div>
 
     <div class="pub-list" data-pub-list>
-        <p class="pub-count"><strong data-pub-count>{{ pubs.size }}</strong> {% include t.html ko="건" en="items" %}</p>
         {%- for g in by_year %}
         <section class="pub-year" data-year-group>
           <h2 class="pub-year-title">{{ g.name }}</h2>
