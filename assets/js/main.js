@@ -176,7 +176,8 @@
   if (!canvas || !canvas.getContext) return;
   var ctx = canvas.getContext("2d");
   var W = 0, H = 0, DPR = 1, ox = 0, oy = 0, scale = 1;
-  var MAX_R = 80, FOV = Math.PI / 3; // 80 m, ±60°
+  var MAX_R = 80, FOV = Math.PI / 3; // 시뮬레이션 좌표 반경(단위), ±60°
+  var RANGE_M = 400;                   // 화면에 표시하는 최대 거리(m) — 링 라벨은 이 값에 맞춰 환산
   var TEAL = "63,213,196", RED = "255,107,107", BLUE = "77,171,255";
 
   function rnd(a, b) { return a + Math.random() * (b - a); }
@@ -232,7 +233,7 @@
       var p = toScreen(.8, r);
       ctx.fillStyle = "rgba(255,255,255,.32)";
       ctx.font = "10px ui-monospace, Menlo, monospace";
-      ctx.fillText(r + "m", p[0] + 3, p[1] - 4);
+      ctx.fillText(Math.round(r * RANGE_M / MAX_R) + "m", p[0] + 3, p[1] - 4);
     }
     for (var d = -60; d <= 60; d += 30) {
       var a = d * Math.PI / 180;
