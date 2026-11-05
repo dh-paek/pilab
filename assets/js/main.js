@@ -229,10 +229,6 @@
       ctx.beginPath();
       ctx.arc(ox, oy, r * scale, -Math.PI / 2 - FOV, -Math.PI / 2 + FOV);
       ctx.stroke();
-      var p = toScreen(.8, r);
-      ctx.fillStyle = "rgba(255,255,255,.32)";
-      ctx.font = "10px ui-monospace, Menlo, monospace";
-      ctx.fillText(r + "m", p[0] + 3, p[1] - 4);
     }
     for (var d = -60; d <= 60; d += 30) {
       var a = d * Math.PI / 180;
