@@ -97,10 +97,9 @@ slug: home
 <!-- ======================== PUBLICATIONS ======================== -->
 <section class="section section--home section--line">
   <div class="container">
-    {%- assign n_papers = site.data.publications | where_exp: "p", "p.type != 'patent'" | size %}
     <div class="section-head">
       <div>
-        <p class="eyebrow">Publications <span class="dim">· {{ n_papers }} papers</span></p>
+        <p class="eyebrow">Publications</p>
         <h2 class="section-title">{% include t.html ko="주요 논문" en="Selected Papers" %}</h2>
       </div>
       <a class="btn btn-outline" href="{{ '/publications/' | relative_url }}">{% include t.html ko="논문 더 보기" en="More papers" %} {% include icon.html name="arrow" size=16 %}</a>
@@ -121,7 +120,7 @@ slug: home
     <div>
       <p class="eyebrow">Join PILab <span class="pill">{% include t.html ko="2027학년도 모집" en="Recruiting for 2027" %}</span></p>
       <h2 class="join-title">{% include t.html ko="<em>센서 AI 기술</em>을 함께 만들어갈 연구원을 찾습니다" en="We're looking for researchers to build <em>sensor AI</em> with us" %}</h2>
-      <p class="muted">{% include t.html ko="대학원 진학(석사 · 박사 · 석박통합)과 학부 인턴 지원은 연중 열려 있습니다." en="Graduate applications (M.S., Ph.D., integrated) and undergraduate internships are open all year." %}</p>
+      <p class="muted">{% include t.html ko="대학원 진학(석사 · 박사 · 석박통합)과 학부연구생 지원은 연중 열려 있습니다." en="Graduate applications (M.S., Ph.D., integrated) and undergraduate researcher positions are open all year." %}</p>
       <a class="link-arrow" href="{{ '/join/' | relative_url }}">{% include t.html ko="지원 절차 알아보기" en="See the application steps" %} {% include icon.html name="arrow" size=16 %}</a>
     </div>
     <div class="join-contact">
