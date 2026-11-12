@@ -56,7 +56,8 @@ hero:
             <p class="tut-meta">{% include t.html v=x.event %}{% if x.place %}<span class="sep">·</span>{% include t.html v=x.place %}{% endif %}{% if x.note %}<span class="sep">·</span>{% include t.html v=x.note %}{% endif %}</p>
           </div>
           <div class="tut-action">
-            {%- if x.pdfs %}
+            {%- if x.no_pdf %}
+            {%- elsif x.pdfs %}
             {%- for f in x.pdfs %}
             {%- if f.url and f.url != "" %}
             <a class="btn btn-outline btn-sm" href="{% if f.url contains '://' %}{{ f.url }}{% else %}{{ f.url | relative_url }}{% endif %}" target="_blank" rel="noopener"{% unless f.url contains '://' %} download{% endunless %}>{% include icon.html name="file" size=16 %} {{ f.label | default: "PDF" }}</a>

@@ -69,11 +69,11 @@ tutorials:
     event: { ko: "IEEE ICRA 2026 Workshop “Radar in Robotics: New Frontiers” 기조강연", en: "Keynote, IEEE ICRA 2026 Workshop “Radar in Robotics: New Frontiers”" }
     place: { ko: "오스트리아 빈", en: "Vienna, Austria" }
     url: "https://sites.google.com/view/radar-robotics/home"
-    pdf: ""
+    pdf: "https://drive.google.com/file/d/1VkXl8n2h0caPWa7f_5s9f5Ya_D6Zcvho/view"
 
   - date: "2026-10-09"
     title: "Beyond Vision: 4D Radar and Sensor Fusion AI for Robust Perception"
     event: { ko: "EuMW 2026 EuRAD 단기강좌 SF03 (Co-Chair)", en: "EuMW 2026 EuRAD Short Course SF03 (Co-Chair)" }
     place: { ko: "영국 런던", en: "London, UK" }
     url: "https://www.eumw.eu/conferences/workshops-and-short-courses/#sf-03"
-    pdf: ""
+    no_pdf: true                # 자료 공개 안 함 — PDF 버튼·'준비 중' 표시 없음
