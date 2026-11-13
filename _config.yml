@@ -16,8 +16,8 @@ description: >-
 #   - 저장소 이름이 pilab-website     →  baseurl: "/pilab-website"
 #   - 커스텀 도메인(CNAME) 사용 시     →  baseurl: "", url: "https://도메인"
 # ---------------------------------------------------------------------
-url: "https://dh-paek.github.io"
-baseurl: "/pilab"          # 저장소 dh-paek/pilab → https://dh-paek.github.io/pilab
+url: "https://pi.korea.ac.kr"
+baseurl: ""                 # 사용자 도메인 pi.korea.ac.kr (저장소 dh-paek/pilab, CNAME 파일)
 
 # ---------------------------------------------------------------------
 #  연구실 정보 — 헤더·푸터·About·Join 페이지 곳곳에 쓰입니다.
