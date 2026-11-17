@@ -11,7 +11,7 @@ pi:
   degree: "Ph.D."
   role: { ko: "조교수", en: "Assistant Professor" }
   affiliation:
-    ko: "고려대학교 미래모빌리티학과"
+    ko: "고려대학교 세종캠퍼스 미래모빌리티학과"
     en: "Department of Mobility Science and Engineering, Korea University"
   photo: "/assets/img/members/dong-hee-paek.jpg"
   email: "dhpaek@korea.ac.kr"
