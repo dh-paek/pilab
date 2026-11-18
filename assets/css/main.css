@@ -347,7 +347,7 @@ html[data-lang="ko"] .hero-title { font-family: var(--font-sans); font-weight: 8
 .radar-rings { position: absolute; right: -180px; top: -260px; width: 720px; height: 720px; border-radius: 50%; background: repeating-radial-gradient(circle, transparent 0 54px, rgba(255, 255, 255, .06) 54px 55px); pointer-events: none; }
 .radar-rings::after { content: ""; position: absolute; inset: 0; border-radius: 50%; background: conic-gradient(from 200deg, rgba(63, 213, 196, .18), transparent 60deg); }
 .page-hero-inner { position: relative; display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 32px; align-items: center; padding-block: 76px 40px; }
-.page-hero-big { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.92rem, 4.48vw, 3.58rem); line-height: 1; letter-spacing: -0.05em; }   /* 처음 크기의 약 64% (80% × 80%) */
+.page-hero-big { font-family: var(--font-display); font-weight: 700; font-size: clamp(2.4rem, 5.6vw, 4.48rem); line-height: 1; letter-spacing: -0.05em; }   /* 처음 크기의 80% */
 .page-hero-meta { display: grid; gap: 8px; }
 .page-hero-title { font-size: 1.6rem; font-weight: 800; letter-spacing: -0.03em; }
 .page-hero-desc { color: var(--on-dark-2); font-size: .94rem; max-width: 44ch; min-height: 2lh; }   /* 설명이 1줄이어도 2줄 자리 확보 → 메뉴마다 상단 높이 동일 */
