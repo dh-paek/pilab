@@ -143,7 +143,7 @@ html[data-lang="ko"] body [lang="en"] { display: none !important; }
 .tag--talk { background: #e6f7f5; color: #0f766e; }
 .tag--paper { background: #e8f0fb; color: #1d4f99; }
 .tag--award { background: #fff4d6; color: #8a5a00; }
-.tag--recruit { background: var(--crimson-soft); color: var(--crimson); }
+.tag--recruit { background: var(--navy); color: #fff; }   /* 모집 = 상단 배너와 같은 남색 */
 .tag--event { background: #f1ebfa; color: #5b3a9b; }
 .tag--press { background: #eef1f5; color: #3d4b63; }
 
@@ -306,7 +306,7 @@ html[data-lang="ko"] .hero-title { font-family: var(--font-sans); font-weight: 8
 .cover--talk { background: linear-gradient(135deg, #0f3d4a, #0d1830); }
 .cover--paper { background: linear-gradient(135deg, #1b2f63, #0d1830); }
 .cover--award { background: linear-gradient(135deg, #5a3b08, #2a1c06); }
-.cover--recruit { background: linear-gradient(135deg, var(--crimson), #4a0b18); }
+.cover--recruit { background: linear-gradient(135deg, var(--navy-2), var(--navy)); }
 .cover--event { background: linear-gradient(135deg, #3b2a6b, #0d1830); }
 .cover--press { background: linear-gradient(135deg, #2b3445, #0d1830); }
 .cover-art { position: relative; display: grid; place-items: center; width: 76px; height: 76px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, .3); box-shadow: 0 0 0 16px rgba(255, 255, 255, .04), 0 0 0 34px rgba(255, 255, 255, .025); }
